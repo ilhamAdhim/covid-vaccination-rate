@@ -3,6 +3,7 @@ import './App.css';
 import 'antd/dist/antd.css'
 import LandingPage from './pages/LandingPage';
 import SearchBar from './components/SearchBar';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         </a>
 
         {/* <LandingPage /> */}
-        <SearchBar role="Hospital" />
+        <Navbar></Navbar>
       </header>
     </div>
   );

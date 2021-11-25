@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TentangKami = props => {
+const GlobalCases = props => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const TentangKami = props => {
     );
 };
 
-export default TentangKami;
+export default GlobalCases;
