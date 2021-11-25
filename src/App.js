@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css'
+import LandingPage from './pages/LandingPage';
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
         >
           Learn React
         </a>
+
+        {/* <LandingPage /> */}
+        <SearchBar role="Hospital" />
       </header>
     </div>
   );
