@@ -1,47 +1,57 @@
 import React from 'react';
+
 import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Link
 } from "react-router-dom";
 
 import GlobalCases from '../pages/GlobalCases';
 import TipsKesehatan from '../pages/TipsKesehatan';
 import LandingPage from '../pages/LandingPage';
 
-const Navbar = props => {
-   
-    return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/global">Global</Link>
-            </li>
-            <li>
-              <Link to="/tips-kesehatan">Tips Kesehatan</Link>
-            </li>
-          </ul>
-        </nav>
+import '../styles/navbar.css'
+import { Col, Row } from 'antd';
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Routes>
-            <Route path="/" element={<LandingPage />}>
-          </Route>
-          <Route path="/tips-kesehatan" element={<TipsKesehatan />}>
-          </Route>
-          <Route path="/global" element={<GlobalCases />}>
-          </Route>
-        </Routes>
-      </div>
-    </Router>
-  );
+const Navbar = props => {
+
+    return (
+        <Router>
+            <Row justify="space-around" style={{ marginBottom: '2em' }} id="navbar">
+                <Col flex={2}>
+                    Logo
+                </Col>
+                <Col flex={0.5}>
+                    <Row justify="space-around">
+                        <Col>
+                            <Link to="/">
+                                <p className="menu">Home</p>
+                            </Link>
+                        </Col>
+                        <Col>
+                            <Link to="/tips-kesehatan">
+                                <p className="menu">Tips Kesehatan</p>
+                            </Link>
+                        </Col>
+                        <Col>
+                            <Link to="/global">
+                                <p className="menu">Global</p>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+            <Routes>
+                <Route path="/" element={<LandingPage />}>
+                </Route>
+                <Route path="/tips-kesehatan" element={<TipsKesehatan />}>
+                </Route>
+                <Route path="/global" element={<GlobalCases />}>
+                </Route>
+            </Routes>
+        </Router>
+    );
 };
 
 

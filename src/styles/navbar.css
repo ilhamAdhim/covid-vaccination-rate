@@ -1,0 +1,33 @@
+#navbar {
+  text-decoration: none;
+  padding: 2em 9em;
+}
+
+.menu {
+  display: inline-block;
+  position: relative;
+  color: #222831;
+}
+
+.menu:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  top: 2em;
+  bottom: 0;
+  left: 0;
+  background-color: #ff725e;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.menu:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu:hover {
+  color: #ff725e;
+}
