@@ -1,8 +1,7 @@
 import { Col, Divider, Row, Typography } from 'antd';
 import React from 'react';
-import CardItem from '../components/CardItem';
 import HeaderJumbotron from '../components/HeaderJumbotron';
-import SearchBar from '../components/SearchBar';
+import SearchComponent from '../components/SearchComponent';
 import Footer from '../components/Footer';
 import CardList from '../components/CardList';
 
@@ -10,14 +9,12 @@ import { ReactComponent as CustomBlobSVG } from '../assets/custom-blob.svg';
 import { ReactComponent as IndonesiaSVG } from '../assets/indonesia-map.svg';
 
 import logo from '../assets/mockup-graph.png'
-import '../styles/landingpage.css'
+import '../styles/style.css'
 
 const LandingPage = props => {
     return (
         <>
-            <div style={{
-                padding: "2em 9em"
-            }}>
+            <div className="landing-page">
                 <HeaderJumbotron />
 
                 <Divider style={{ justifyContent: 'center', color: '#ff725e', marginTop: '5em' }}> Statistics </Divider>
@@ -26,8 +23,9 @@ const LandingPage = props => {
                         Corona Virus Overview
                     </Typography.Title>
                 </Row>
+
+                {/* Ini bagian map dan statistiknya */}
                 <Row style={{ marginTop: '2em' }} >
-                    {/* Ini map dan statistiknya */}
                     <Col flex="2" sm={{ span: 12 }}>
                         <div style={{ position: 'absolute', marginLeft: '-10em', marginTop: '-4em' }}>
                             <CustomBlobSVG />
@@ -37,8 +35,9 @@ const LandingPage = props => {
                     </Col>
                     <Col flex="2" sm={{ span: 12 }}> Lorem </Col>
                 </Row>
+
+                {/* Ini grafik kasus covid19 hari ini dan grafik prediksi vaksinasi COVID-19 */}
                 <Row style={{ marginTop: '2em' }} >
-                    {/* Ini grafik kasus covid19 hari ini dan grafik prediksi vaksinasi COVID-19 */}
                     <Col flex="1">
                         <Divider style={{ justifyContent: 'center' }}> Pantauan COVID-19 Hari Ini </Divider>
                         <img src={logo} alt="lalaa" width={600} />
@@ -57,6 +56,8 @@ const LandingPage = props => {
 
                 <CardList products={[1, 2, 3, 4, 5, 6, 7, 8]} />
 
+                {/* Bagian Search Provinsi */}
+                <SearchComponent role="provinsi" />
             </div >
             <Footer />
         </>

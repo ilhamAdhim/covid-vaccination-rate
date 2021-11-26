@@ -2,7 +2,7 @@ import React from 'react';
 
 const TipsKesehatan = () => {
     return (
-        <div>
+        <div className="tips-kesehatan-page">
             Ini tips kesehatan
         </div>
     );

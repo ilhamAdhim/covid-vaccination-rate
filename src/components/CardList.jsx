@@ -13,9 +13,9 @@ const CardList = (props) => {
     return (
         <div>
             {productRows.map((row, idx) => (
-                <Row key={idx} justify="center" gutter={[10, 20]}>
+                <Row key={idx} justify="center" >
                     {row.map(product =>
-                        <Col style={{ textAlign: 'center', padding: '1em' }}
+                        <Col style={{ textAlign: 'center', paddingTop: '2em' }}
                             flex={1} key={product} > <CardItem itemObj={product} role="Hospital" />
                         </Col>
                     )}

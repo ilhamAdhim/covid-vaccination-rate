@@ -1,0 +1,14 @@
+.search-province input[type="text"],
+.ant-input-group-addon button {
+  height: 3em;
+}
+
+.ant-input-group-addon button {
+  width: 3em;
+  border: none;
+  outline: none;
+}
+
+.ant-input-wrapper.ant-input-group {
+  box-shadow: 0 0 5pt 0 #d3d3d3;
+}

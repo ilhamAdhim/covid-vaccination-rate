@@ -3,3 +3,15 @@
 * {
   font-family: "Mulish", sans-serif;
 }
+
+.ant-divider-horizontal.ant-divider-with-text::before,
+.ant-divider-horizontal.ant-divider-with-text::after {
+  border-top: 2px solid #ff725e;
+  width: 20%;
+}
+
+.landing-page,
+.tips-kesehatan-page,
+.global-page {
+  padding: 2em 9em;
+}
