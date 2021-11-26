@@ -1,12 +1,13 @@
+import { Col } from 'antd';
 import React from 'react';
 
-const CardItem = ({role}) => {
+const CardItem = ({role, itemObj}) => {
     
     if(role === "Hospital"){
         return (
-                <div>
-                    Ini Hospital    
-                </div>
+                <>
+                    {`Ini Hospital ${itemObj.value || itemObj}`}
+                </>
             );
     }else{
         return (

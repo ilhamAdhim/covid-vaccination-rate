@@ -1,9 +1,9 @@
 .btn-cta span {
-  padding: 1em;
+  padding: 0.7em;
 }
 
 .btn-cta {
   height: auto;
   border-radius: 2em;
-  width: 170px;
+  width: 220px;
 }
