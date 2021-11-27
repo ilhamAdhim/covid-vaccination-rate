@@ -1,0 +1,11 @@
+.ant-divider-horizontal.ant-divider-with-text::before,
+.ant-divider-horizontal.ant-divider-with-text::after {
+  border-top: 2px solid #ff725e;
+  width: 20%;
+}
+
+.img-center {
+  width: 80%;
+  margin: auto;
+  display: block;
+}

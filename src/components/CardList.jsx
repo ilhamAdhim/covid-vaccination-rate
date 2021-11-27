@@ -6,14 +6,14 @@ const CardList = (props) => {
     // array of N elements, where N is the number of rows needed
     const rows = [...Array(Math.ceil(props.products.length / 4))];
 
-    // chunk the products into the array of rows
+    // chunk the products into the array of rows. 
+    // 1 rows 3 columns
     const productRows = rows.map((row, idx) => props.products.slice(idx * 3, idx * 3 + 3));
-
 
     return (
         <div>
             {productRows.map((row, idx) => (
-                <Row key={idx} justify="center" >
+                <Row key={idx} justify="space-between" gutter={20}>
                     {row.map(product =>
                         <Col style={{ textAlign: 'center', paddingTop: '2em' }}
                             flex={1} key={product} > <CardItem itemObj={product} role="Hospital" />

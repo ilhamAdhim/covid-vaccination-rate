@@ -4,14 +4,17 @@
   font-family: "Mulish", sans-serif;
 }
 
-.ant-divider-horizontal.ant-divider-with-text::before,
-.ant-divider-horizontal.ant-divider-with-text::after {
-  border-top: 2px solid #ff725e;
-  width: 20%;
-}
-
 .landing-page,
 .tips-kesehatan-page,
 .global-page {
   padding: 2em 9em;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff725e; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
 }
