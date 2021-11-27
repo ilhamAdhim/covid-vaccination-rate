@@ -12,14 +12,26 @@ import logo from '../assets/mockup-graph.png'
 import '../styles/style.css'
 import '../styles/landingpage.css'
 import CaseItem from '../components/CaseItem';
-import { getProvinceData } from '../utils/DataCRUD';
+import { getIndonesiaCOVIDStats, getProvinceData } from '../utils/DataCRUD';
 
 const LandingPage = props => {
     const [provinceData, setProvinceData] = useState([])
+    const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
+    const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
 
     useEffect(() => {
         getProvinceData().then(item => setProvinceData(item))
+
+        getIndonesiaCOVIDStats().then(responseData => {
+            setDailyCaseIndoData(responseData.penambahan)
+            setTotalCaseIndoData(responseData.total)
+        })
+
     }, []);
+
+    useEffect(() => {
+        console.log(dailyCaseIndoData)
+    }, [dailyCaseIndoData]);
 
     return (
         <>
@@ -48,20 +60,25 @@ const LandingPage = props => {
                         </Typography.Paragraph>
 
                         <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
-                            <CaseItem caseCondition="Kasus" number="4,253,992" />
-                            <CaseItem caseCondition="Sembuh" number="4,253,992" />
-                            <CaseItem caseCondition="Dirawat" number="4,253,992" />
-                            <CaseItem caseCondition="Meninggal" number="4,253,992" />
+                            {Object.entries(totalCaseIndoData).map(item =>
+                                item !== 'tanggal' && <CaseItem caseCondition={item[0]} number={item[1]} />
+                            )}
                         </Row>
 
-                        <Typography.Paragraph style={{ fontWeight: 'bold', fontSize: '1.3em' }} >
-                            Kasus Harian di Indonesia
-                        </Typography.Paragraph>
+                        <Row justify="space-between">
+                            <Col>
+                                <Typography.Paragraph style={{ fontWeight: 'bold', fontSize: '1.3em' }} >
+                                    Kasus Harian di Indonesia
+                                </Typography.Paragraph>
+                            </Col>
+                            <Col style={{ fontWeight: 'bold' }}>
+                                Per tanggal {dailyCaseIndoData?.tanggal}
+                            </Col>
+                        </Row>
                         <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
-                            <CaseItem caseCondition="Kasus" number="4,253,992" />
-                            <CaseItem caseCondition="Sembuh" number="4,253,992" />
-                            <CaseItem caseCondition="Dirawat" number="4,253,992" />
-                            <CaseItem caseCondition="Meninggal" number="4,253,992" />
+                            {Object.entries(dailyCaseIndoData).map(item =>
+                                item !== 'tanggal' && <CaseItem caseCondition={item[0]} number={item[1]} />
+                            )}
                         </Row>
 
                     </Col>

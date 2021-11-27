@@ -4,6 +4,7 @@ import { Divider, Input, Row, Typography } from 'antd';
 
 import '../styles/searchbar.css'
 import SearchResult from './SearchResult';
+import { uppercaseFirst } from '../utils/Common';
 const { Search } = Input;
 
 const SearchComponent = ({ role, dataSource }) => {
@@ -19,7 +20,7 @@ const SearchComponent = ({ role, dataSource }) => {
         setSearchValue(value)
     }
 
-    let roleUcFirst = role.charAt(0).toUpperCase() + role.slice(1)
+    let roleUcFirst = uppercaseFirst(role)
 
     useEffect(() => {
         if (role === "provinsi")
@@ -42,7 +43,7 @@ const SearchComponent = ({ role, dataSource }) => {
             <SearchResult role={role} isSearching={isSearching} searchResult={searchResult} />
 
             <Typography.Paragraph
-                style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2em' }}>
+                style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2em', marginTop: '1em' }}>
                 Mulai Cari Sekarang
             </Typography.Paragraph>
         </>

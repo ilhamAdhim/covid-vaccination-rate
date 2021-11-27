@@ -3,7 +3,7 @@ import { Button, Card, Col, Row, Typography } from 'antd';
 import {
     MedicineBoxOutlined,
     PhoneOutlined,
-    CompassOutlined
+    EnvironmentOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const CardItem = ({ role, itemObj }) => {
                 </Row>
                 <Row gutter={20} style={{ marginTop: '.8em' }}>
                     <Col>
-                        <CompassOutlined style={{ fontSize: '1.5em' }} />
+                        <EnvironmentOutlined style={{ fontSize: '1.5em' }} />
                     </Col>
                     <Col>
                         <Typography.Text style={{ fontWeight: 'bold' }}>
@@ -48,21 +48,23 @@ const CardItem = ({ role, itemObj }) => {
     } else {
         return (
             <Card style={{ boxShadow: '0 0 3pt 0 #d3d3d3' }}>
-                <Row gutter={20} style={{ marginTop: '.8em' }}>
+                <Row gutter={20} style={{ marginTop: '.8em' }} justify="space-between ">
                     <Col>
-                        <MedicineBoxOutlined style={{ fontSize: '1.5em' }} />
+                        <EnvironmentOutlined style={{ fontSize: '1.5em' }} />
                     </Col>
                     <Col>
                         <Typography.Text style={{ fontWeight: 'bold' }}>
-                            {/* {`Ini Hospital ${itemObj.value || itemObj}`} */}
                             {itemObj.name}
 
-                            <Link to={`/province/${itemObj.name.replace(' ', '-').toLowerCase()}`}>
-                                <Button>
-                                    Detail
-                                </Button>
-                            </Link>
+
                         </Typography.Text>
+                    </Col>
+                    <Col>
+                        <Link to={`/province/${itemObj.name.replace(' ', '-').toLowerCase()}`}>
+                            <Button>
+                                Detail
+                            </Button>
+                        </Link>
                     </Col>
                 </Row>
             </Card>

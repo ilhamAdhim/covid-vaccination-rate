@@ -19,3 +19,22 @@
   background-color: #ff725e; /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */
 }
+
+/* For small screen */
+@media only screen and (max-width: 640px) {
+  .landing-page,
+  .tips-kesehatan-page,
+  .global-page,
+  .detail-province-page {
+    padding: 0 1em;
+  }
+}
+/* For medium screen */
+@media only screen and (max-width: 1024px) and (min-width: 641px) {
+  .landing-page,
+  .tips-kesehatan-page,
+  .global-page,
+  .detail-province-page {
+    padding: 0 1em;
+  }
+}
