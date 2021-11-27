@@ -1,5 +1,5 @@
 import { Col, Divider, Row, Typography } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderJumbotron from '../components/HeaderJumbotron';
 import SearchComponent from '../components/SearchComponent';
 import Footer from '../components/Footer';
@@ -12,8 +12,15 @@ import logo from '../assets/mockup-graph.png'
 import '../styles/style.css'
 import '../styles/landingpage.css'
 import CaseItem from '../components/CaseItem';
+import { getProvinceData } from '../utils/DataCRUD';
 
 const LandingPage = props => {
+    const [provinceData, setProvinceData] = useState([])
+
+    useEffect(() => {
+        getProvinceData().then(item => setProvinceData(item))
+    }, []);
+
     return (
         <>
             <div className="landing-page">
@@ -78,10 +85,10 @@ const LandingPage = props => {
                     </Typography.Title>
                 </Row>
 
-                <CardList products={[1, 2, 3, 4, 5, 6, 7, 8]} />
+                <CardList dataSource={[1, 2, 3, 4, 5, 6, 7, 8]} role="Hospital" />
 
                 {/* Bagian Search Provinsi */}
-                <SearchComponent role="provinsi" />
+                <SearchComponent role="provinsi" dataSource={provinceData} />
             </div >
             <Footer />
         </>

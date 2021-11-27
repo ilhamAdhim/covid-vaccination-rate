@@ -8,12 +8,11 @@ const CaseItem = ({ caseCondition, number }) => {
             : caseCondition === "Dirawat" ? "#FFC727"
                 : caseCondition === "Meninggal" ? "#FF725E" : "#BA68C8",
         fontWeight: 'bold'
-
     }
 
     return (
         <Col flex={1}>
-            <Card style={{ textAlign: 'center',boxShadow: '0 0 5pt 0 #d3d3d3'  }}>
+            <Card style={{ textAlign: 'center',boxShadow: '0 0 3pt 0 #d3d3d3'  }}>
                 <Typography.Text children={caseCondition} style={textStyle} />
                 <hr style={{marginBottom : '-1em', opacity: '0.4'}} />
                 <br />

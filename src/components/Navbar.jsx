@@ -10,6 +10,7 @@ import {
 import GlobalCases from '../pages/GlobalCases';
 import TipsKesehatan from '../pages/TipsKesehatan';
 import LandingPage from '../pages/LandingPage';
+import DetailProvince from '../pages/DetailProvince';
 
 import '../styles/navbar.css'
 import { Col, Row } from 'antd';
@@ -48,6 +49,8 @@ const Navbar = props => {
                 <Route path="/tips-kesehatan" element={<TipsKesehatan />}>
                 </Route>
                 <Route path="/global" element={<GlobalCases />}>
+                </Route>
+                <Route path="/province/:name" element={<DetailProvince />}>
                 </Route>
             </Routes>
         </Router>

@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from 'react';
 
 import { Divider, Input, Row, Typography } from 'antd';
-import { ReactComponent as SearchProvinceSVG } from '../assets/search-province.svg';
 
 import '../styles/searchbar.css'
+import SearchResult from './SearchResult';
 const { Search } = Input;
 
-const SearchComponent = ({ role }) => {
+const SearchComponent = ({ role, dataSource }) => {
     const [isSearching, setIsSearching] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
+    const [searchResult, setSearchResult] = useState([''])
 
     let placeholder = `Cari ${role} . . . `
 
     const onSearch = value => {
         if (value === '') setIsSearching(false)
         else setIsSearching(true)
-        console.log(value);
+        setSearchValue(value)
     }
 
     let roleUcFirst = role.charAt(0).toUpperCase() + role.slice(1)
 
     useEffect(() => {
-        console.log(isSearching)
-    }, [isSearching]);
+        if (role === "provinsi")
+            setSearchResult(dataSource?.provinces?.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase())))
+        else
+            console.log("searching hospital")
+
+    }, [isSearching, searchValue, dataSource, role]);
 
     return (
         <>
@@ -32,23 +38,13 @@ const SearchComponent = ({ role }) => {
                 <Search className="search-province" placeholder={placeholder} allowClear onSearch={onSearch}
                     style={{ width: '60%', padding: '2em' }} />
             </Row>
-            <Row justify="center" align="bottom">
-                <div>
-                    {role === 'provinsi' && !isSearching ?
-                        <SearchProvinceSVG />
-                        :
-                        role === 'hospital' && !isSearching ?
-                            <SearchProvinceSVG />
-                            :
-                            <> hasilnya</>
 
-                    }
-                    <Typography.Paragraph
-                        style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2em' }}>
-                        Mulai Cari Sekarang
-                    </Typography.Paragraph>
-                </div>
-            </Row>
+            <SearchResult role={role} isSearching={isSearching} searchResult={searchResult} />
+
+            <Typography.Paragraph
+                style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2em' }}>
+                Mulai Cari Sekarang
+            </Typography.Paragraph>
         </>
     );
 };
