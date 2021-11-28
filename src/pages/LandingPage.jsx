@@ -19,14 +19,19 @@ const LandingPage = props => {
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
 
+    const [isLoadingDaily, setIsLoadingDaily] = useState(true)
+    const [isLoadingTotal, setIsLoadingTotal] = useState(true)
+
     useEffect(() => {
         getProvinceData().then(item => setProvinceData(item))
 
         getIndonesiaCOVIDStats().then(responseData => {
             setDailyCaseIndoData(responseData.penambahan)
             setTotalCaseIndoData(responseData.total)
-        })
 
+            setIsLoadingDaily(false)
+            setIsLoadingTotal(false)
+        })
     }, []);
 
     useEffect(() => {
@@ -61,7 +66,7 @@ const LandingPage = props => {
 
                         <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
                             {Object.entries(totalCaseIndoData).map(item =>
-                                item !== 'tanggal' && <CaseItem caseCondition={item[0]} number={item[1]} />
+                                <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingTotal} />
                             )}
                         </Row>
 
@@ -77,7 +82,7 @@ const LandingPage = props => {
                         </Row>
                         <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
                             {Object.entries(dailyCaseIndoData).map(item =>
-                                item !== 'tanggal' && <CaseItem caseCondition={item[0]} number={item[1]} />
+                                <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingDaily} />
                             )}
                         </Row>
 

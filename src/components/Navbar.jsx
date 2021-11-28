@@ -16,6 +16,7 @@ import '../styles/navbar.css'
 import { Col, Row } from 'antd';
 
 const Navbar = props => {
+    // TODO : Ini belum ada logonya
 
     return (
         <Router>

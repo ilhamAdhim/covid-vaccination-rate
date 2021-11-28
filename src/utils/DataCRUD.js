@@ -40,3 +40,8 @@ export const getHospitalCOVIDStats = async (hospitalID) => {
     let response = await axios.get(`https://rs-bed-covid-api.vercel.app/api/get-bed-detail?hospitalid=${hospitalID}&type=1`)
     return response.data
 }
+
+export const getListLogoProvince = async () => {
+    let response = await axios.get(`https://feriirawan-api.herokuapp.com/list/symbols/province/200`)
+    return response.data
+}

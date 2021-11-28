@@ -20,6 +20,8 @@
   border-radius: 20px; /* roundness of the scroll thumb */
 }
 
+/* TODO : Perbaiki responsifnya */
+
 /* For small screen */
 @media only screen and (max-width: 640px) {
   .landing-page,

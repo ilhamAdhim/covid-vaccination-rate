@@ -16,7 +16,7 @@ const CardList = ({dataSource, role}) => {
                 <Row key={idx} justify="space-between" gutter={20}>
                     {row.map(item =>
                         <Col style={{ textAlign: 'center', paddingTop: '2em' }}
-                            flex={1} key={item.id}> <CardItem itemObj={item} role={role} />
+                            flex={1} key={item.id || item}> <CardItem itemObj={item} role={role} />
                         </Col>
                     )}
                 </Row>
