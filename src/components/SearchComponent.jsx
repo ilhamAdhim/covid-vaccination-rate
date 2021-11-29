@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import { Divider, Input, Row, Typography } from 'antd';
 
-import '../styles/searchbar.css'
 import SearchResult from './SearchResult';
 import { uppercaseFirst } from '../utils/Common';
-const { Search } = Input;
 
+import '../styles/style.css'
+import '../styles/searchbar.css'
+
+const { Search } = Input;
 const SearchComponent = ({ role, dataSource }) => {
     console.log(dataSource)
     const [isSearching, setIsSearching] = useState(false)
@@ -27,18 +29,14 @@ const SearchComponent = ({ role, dataSource }) => {
         if (role === "provinsi")
             setSearchResult(dataSource?.provinces?.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase())))
         else {
-            console.log("searching hospital")
+            // console.log("searching hospital")
             setSearchResult(dataSource)
-
         }
-
     }, [isSearching, searchValue, dataSource, role]);
 
     return (
         <>
-            <Divider style={{ justifyContent: 'center', color: '#ff725e', marginTop: '5em' }}>
-                {`Cari ${roleUcFirst}`}
-            </Divider>
+            <Divider className="colored-divider"> {`Cari ${roleUcFirst}`} </Divider>
             <Row justify="center">
                 <Search className="search-province" placeholder={placeholder} allowClear onSearch={onSearch}
                     style={{ width: '60%', padding: '2em' }} />
@@ -46,10 +44,10 @@ const SearchComponent = ({ role, dataSource }) => {
 
             <SearchResult role={role} isSearching={isSearching} searchResult={searchResult} />
 
-            <Typography.Paragraph
-                style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.2em', marginTop: '1em' }}>
+            <Typography.Title level={5}
+                style={{ textAlign: 'center', marginTop: '1em' }}>
                 Mulai Cari Sekarang
-            </Typography.Paragraph>
+            </Typography.Title>
         </>
     );
 };

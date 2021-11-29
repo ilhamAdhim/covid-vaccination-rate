@@ -4,6 +4,26 @@
 
 .btn-cta {
   height: auto;
-  border-radius: 2em;
   width: 220px;
+}
+
+.btn-cta,
+.btn-cta-2nd {
+  border-radius: 2em;
+  margin-top: 2em;
+  font-size: 1.2em;
+  background-color: #ff725e;
+  color: white;
+}
+
+.btn-cta-2nd {
+  height: 3.2em;
+  width: 140px;
+}
+
+.btn-cta:hover,
+.btn-cta-2nd:hover {
+  background-color: white;
+  color: #ff725e;
+  border-color: #ff725e;
 }

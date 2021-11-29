@@ -4,6 +4,48 @@
   font-family: "Mulish", sans-serif;
 }
 
+.new-row-card {
+  margin-top: 0.8em;
+}
+
+.new-row {
+  margin-top: 1em;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.normal-divider,
+.colored-divider {
+  justify-content: center;
+}
+
+.colored-divider span {
+  color: #ff725e;
+}
+
+.ant-divider-horizontal.ant-divider-with-text.colored-divider {
+  margin-top: 5em;
+}
+
+.card-text {
+  font-weight: bold;
+}
+
+.card-item,
+.case-item {
+  box-shadow: 0 0 3pt 0 #d3d3d3;
+}
+
+.case-item {
+  text-align: center;
+}
+
+.icon-style {
+  font-size: 1.5em;
+}
+
 .landing-page,
 .tips-kesehatan-page,
 .global-page,

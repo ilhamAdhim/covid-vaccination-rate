@@ -6,7 +6,7 @@ import axios from "axios"
 //     return response.data
 // }
 
-export const getDailyProvinceData = async () => {
+export const getDailyAndTotalProvinceData = async () => {
     let response = await axios.get(`https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi/more`)
     return response.data
 }
@@ -19,11 +19,6 @@ export const getIndonesiaCOVIDStats = async () => {
 export const getProvinceData = async () => {
     let response = await axios.get('https://rs-bed-covid-api.vercel.app/api/get-provinces')
     return await response.data
-}
-
-export const getTotalProvinceData = async (link) => {
-    let response = await axios.get(`${link}`)
-    return response.data
 }
 
 export const getAllCitiesInProvince = async (provID) => {

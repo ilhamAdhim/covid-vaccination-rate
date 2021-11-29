@@ -7,38 +7,41 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
+import "../styles/style.css"
+import "../styles/card-item.css"
+
 const CardItem = ({ role, itemObj }) => {
 
     if (role.toLowerCase() === "hospital") {
         return (
-            <Card style={{ boxShadow: '0 0 3pt 0 #d3d3d3' }}>
-                <Row gutter={20} style={{ marginTop: '.8em' }}>
+            <Card className="card-item">
+                <Row gutter={20} className="new-row">
                     <Col>
-                        <MedicineBoxOutlined style={{ fontSize: '1.5em' }} />
+                        <MedicineBoxOutlined className="icon-style" />
                     </Col>
                     <Col>
-                        <Typography.Text style={{ fontWeight: 'bold' }}>
+                        <Typography.Text className="text-bold">
                             {/* {`Ini Hospital ${itemObj.value || itemObj}`} */}
                             RS Umum Dharma Yadnya
                         </Typography.Text>
                     </Col>
                 </Row>
-                <Row gutter={20} style={{ marginTop: '.8em' }}>
+                <Row gutter={20} className="new-row">
                     <Col>
-                        <EnvironmentOutlined style={{ fontSize: '1.5em' }} />
+                        <EnvironmentOutlined className="icon-style" />
                     </Col>
                     <Col>
-                        <Typography.Text style={{ fontWeight: 'bold' }}>
+                        <Typography.Text className="text-bold">
                             Jl. WE.Supratman 256, Denpasar
                         </Typography.Text>
                     </Col>
                 </Row>
-                <Row gutter={20} style={{ marginTop: '.8em' }}>
+                <Row gutter={20} className="new-row">
                     <Col>
-                        <PhoneOutlined style={{ fontSize: '1.5em' }} />
+                        <PhoneOutlined className="icon-style" />
                     </Col>
                     <Col>
-                        <Typography.Text style={{ fontWeight: 'bold' }}>
+                        <Typography.Text className="text-bold">
                             08123456789
                         </Typography.Text>
                     </Col>
@@ -47,16 +50,14 @@ const CardItem = ({ role, itemObj }) => {
         );
     } else {
         return (
-            <Card style={{ boxShadow: '0 0 3pt 0 #d3d3d3' }}>
-                <Row gutter={20} style={{ marginTop: '.8em' }} justify="space-between ">
+            <Card className="card-item">
+                <Row gutter={20} className="new-row" justify="space-between ">
                     <Col>
-                        <EnvironmentOutlined style={{ fontSize: '1.5em' }} />
+                        <EnvironmentOutlined className="icon-style" />
                     </Col>
                     <Col>
-                        <Typography.Text style={{ fontWeight: 'bold' }}>
+                        <Typography.Text className="text-bold">
                             {itemObj.name}
-
-
                         </Typography.Text>
                     </Col>
                     <Col>

@@ -5,14 +5,16 @@ import SearchComponent from '../components/SearchComponent';
 import Footer from '../components/Footer';
 import CardList from '../components/CardList';
 
+import CaseItem from '../components/CaseItem';
+import { getIndonesiaCOVIDStats, getProvinceData } from '../utils/DataCRUD';
+
 import { ReactComponent as CustomBlobSVG } from '../assets/custom-blob.svg';
 import { ReactComponent as IndonesiaSVG } from '../assets/indonesia-map.svg';
 
 import logo from '../assets/mockup-graph.png'
 import '../styles/style.css'
 import '../styles/landingpage.css'
-import CaseItem from '../components/CaseItem';
-import { getIndonesiaCOVIDStats, getProvinceData } from '../utils/DataCRUD';
+import '../styles/svg-style.css'
 
 const LandingPage = props => {
     const [provinceData, setProvinceData] = useState([])
@@ -43,7 +45,7 @@ const LandingPage = props => {
             <div className="landing-page">
                 <HeaderJumbotron />
 
-                <Divider style={{ justifyContent: 'center', color: '#ff725e', marginTop: '5em' }}> Statistics </Divider>
+                <Divider className="colored-divider"> Statistics </Divider>
                 <Row align="center" style={{ marginBottom: '4em' }}>
                     <Typography.Title level={3}>
                         Corona Virus Overview
@@ -51,36 +53,37 @@ const LandingPage = props => {
                 </Row>
 
                 {/* Ini bagian map dan statistiknya */}
-                <Row style={{ marginTop: '2em' }} >
+                <Row className="new-row">
                     <Col flex="2" sm={{ span: 12 }}>
-                        <div style={{ position: 'absolute', marginLeft: '-10em', marginTop: '-4em' }}>
+                        <div className="svg-blob-landing-page">
                             <CustomBlobSVG />
                         </div>
                         <IndonesiaSVG />
 
                     </Col>
                     <Col flex="2" >
-                        <Typography.Paragraph style={{ fontWeight: 'bold', fontSize: '1.3em' }}>
+                        <Typography.Title level={4}>
                             Total Case di Indonesia
-                        </Typography.Paragraph>
+                        </Typography.Title>
 
-                        <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
+                        <Row justify="space-between" gutter={20} className="new-row">
                             {Object.entries(totalCaseIndoData).map(item =>
                                 <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingTotal} />
                             )}
                         </Row>
-
-                        <Row justify="space-between">
+                        <Row justify="space-between" className="new-row">
                             <Col>
-                                <Typography.Paragraph style={{ fontWeight: 'bold', fontSize: '1.3em' }} >
+                                <Typography.Title level={4} >
                                     Kasus Harian di Indonesia
-                                </Typography.Paragraph>
+                                </Typography.Title>
                             </Col>
-                            <Col style={{ fontWeight: 'bold' }}>
-                                Per tanggal {dailyCaseIndoData?.tanggal}
+                            <Col >
+                                <Typography.Title level={5}>
+                                    Per tanggal {dailyCaseIndoData?.tanggal}
+                                </Typography.Title>
                             </Col>
                         </Row>
-                        <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
+                        <Row justify="space-between" gutter={20} className="new-row">
                             {Object.entries(dailyCaseIndoData).map(item =>
                                 <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingDaily} />
                             )}
@@ -90,17 +93,17 @@ const LandingPage = props => {
                 </Row>
 
                 {/* Ini grafik kasus covid19 hari ini dan grafik prediksi vaksinasi COVID-19 */}
-                <Row style={{ marginTop: '2em' }} >
+                <Row className="new-row" >
                     <Col flex="1">
-                        <Divider style={{ justifyContent: 'center' }}> Pantauan COVID-19 Hari Ini </Divider>
+                        <Divider className="normal-divider" > Pantauan COVID-19 Hari Ini </Divider>
                         <img src={logo} alt="lalaa" width={600} className="img-center" />
                     </Col>
                     <Col flex="1">
-                        <Divider style={{ justifyContent: 'center' }}> Prediksi Vaksinasi COVID-19 </Divider>
+                        <Divider className="normal-divider" > Prediksi Vaksinasi COVID-19 </Divider>
                         <img src={logo} alt="lalaa" width={600} className="img-center" />
                     </Col>
                 </Row>
-                <Divider style={{ justifyContent: 'center', color: '#ff725e', marginTop: '5em' }}> Info Rumah Sakit</Divider>
+                <Divider className="colored-divider"> Info Rumah Sakit</Divider>
                 <Row align="center">
                     <Typography.Title level={3}>
                         Rumah Sakit Penyedia Vaksinasi
