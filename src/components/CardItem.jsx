@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const CardItem = ({ role, itemObj }) => {
 
-    if (role === "Hospital") {
+    if (role.toLowerCase() === "hospital") {
         return (
             <Card style={{ boxShadow: '0 0 3pt 0 #d3d3d3' }}>
                 <Row gutter={20} style={{ marginTop: '.8em' }}>

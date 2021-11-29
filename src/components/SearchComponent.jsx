@@ -8,6 +8,7 @@ import { uppercaseFirst } from '../utils/Common';
 const { Search } = Input;
 
 const SearchComponent = ({ role, dataSource }) => {
+    console.log(dataSource)
     const [isSearching, setIsSearching] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResult] = useState([''])
@@ -25,8 +26,11 @@ const SearchComponent = ({ role, dataSource }) => {
     useEffect(() => {
         if (role === "provinsi")
             setSearchResult(dataSource?.provinces?.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase())))
-        else
+        else {
             console.log("searching hospital")
+            setSearchResult(dataSource)
+
+        }
 
     }, [isSearching, searchValue, dataSource, role]);
 

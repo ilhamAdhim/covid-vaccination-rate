@@ -42,6 +42,6 @@ export const getHospitalCOVIDStats = async (hospitalID) => {
 }
 
 export const getListLogoProvince = async () => {
-    let response = await axios.get(`https://feriirawan-api.herokuapp.com/list/symbols/province/200`)
+    let response = await axios.get(`https://feriirawan-api.herokuapp.com/list/symbols/province/150`)
     return response.data
 }

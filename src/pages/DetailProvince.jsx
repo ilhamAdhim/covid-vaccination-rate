@@ -1,51 +1,70 @@
-import { Row } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { splitByUppercase, uppercaseFirst } from '../utils/Common';
+import { Breadcrumb, Col, Row, Skeleton, Typography } from 'antd';
+import React, { useCallback, useEffect, useState } from 'react';
+import { normalizeProvinceName, uppercaseEachWord } from '../utils/Common';
 import { getAllCitiesInProvince, getListLogoProvince, getProvinceData } from '../utils/DataCRUD';
 
-const getNormalizedProvince = () => {
-    let normalized = ''
+import '../styles/detail-province.css'
+import { Link } from 'react-router-dom';
+import CaseItem from '../components/CaseItem';
+import SearchComponent from '../components/SearchComponent';
+import { ReactComponent as CitySVG } from '../assets/city.svg';
 
-    let getCurrentProvince = window.location.pathname.split('/')[2].split('-')
-
-    getCurrentProvince.map(item => normalized += uppercaseFirst(item))
-    return normalized
+const getProvinceName = () => {
+    return window.location.pathname.split('/')[2].replace('-', ' ')
 }
 
 const DetailProvince = props => {
     const [normalizedProvince, setNormalizedProvince] = useState("");
     const [provID, setProvID] = useState("");
     const [cityList, setCityList] = useState("");
-    const [logoList, setLogoList] = useState([]);
 
+    // Province Data
+    const [provinceCaseData, setProvinceCaseData] = useState("");
+
+    // Logo
+    const [logoList, setLogoList] = useState([]);
     const [logoThisProvinceURL, setLogoThisProvinceURL] = useState("");
 
+    // State loading
+    const [isLogoLoaded, setIsLogoLoaded] = useState(false);
+    const [isDataProvinceLoaded, setIsDataProvinceLoaded] = useState(false);
+
     useEffect(() => {
-        let normalized = getNormalizedProvince()
-        setNormalizedProvince(splitByUppercase(normalized))
+        let province = normalizeProvinceName(getProvinceName())
+        setNormalizedProvince(province)
 
         // Fetch logo province
         getListLogoProvince()
             .then(responseData => setLogoList(responseData))
     }, []);
 
-    useEffect(() => {
+    const setIDProvince = useCallback(() => {
         // Fetch ID Provinsi dari provinsi ini
-        if (normalizedProvince.length > 0)
-            getProvinceData().then(response => setProvID(response?.provinces?.filter(item => item.name.includes(normalizedProvince))[0].id))
-    }, [logoList, normalizedProvince]);
+        if (normalizedProvince.length > 0) {
+            getProvinceData().then(response => setProvID(response?.provinces?.find(item => item.name.toLowerCase().includes(getProvinceName())).id))
+            setIsDataProvinceLoaded(true)
+        }
+    }, [normalizedProvince])
 
-    useEffect(() => {
-        // Fetch lambang provinsi
-        if (logoList?.status === "success")
-            setLogoThisProvinceURL(logoList?.lambang?.filter(item => item.title === normalizedProvince)[0].url)
-    }, [logoList]);
-
-    useEffect(() => {
+    const getAllCities = useCallback(() => {
         // Fetch kota yang ada di provinsi ini
         if (provID.length > 0)
             getAllCitiesInProvince(provID).then(response => setCityList(response?.cities))
-    }, [provID]);
+    }, [provID])
+
+    useEffect(() => {
+        // Get ID Province and all cities inside the province 
+        setIDProvince()
+        getAllCities()
+    }, [setIDProvince, getAllCities]);
+
+    useEffect(() => {
+        // Fetch lambang provinsi
+        if (logoList?.status === "success") {
+            setLogoThisProvinceURL(logoList?.lambang?.find(item => item.title.toLowerCase().includes(normalizedProvince.toLowerCase())).url)
+            setIsLogoLoaded(true)
+        }
+    }, [logoList, normalizedProvince]);
 
     useEffect(() => {
         // Fetch rumah sakit yang ada di masing2 kota
@@ -55,9 +74,69 @@ const DetailProvince = props => {
     return (
         // TODO : Ngerjain UI untuk detail Province
         <div className="detail-province-page">
-            <Row>
-                <img src={logoThisProvinceURL} />
+            <Breadcrumb style={{ marginBottom: '3em' }}>
+                <Breadcrumb.Item>
+                    <Link to="/">Home</Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                    <Link to="">Province</Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                    <Link to="">{isDataProvinceLoaded ? uppercaseEachWord(normalizedProvince) : "Loading.."}</Link>
+                </Breadcrumb.Item>
+            </Breadcrumb>
+
+            <Row justify="space-between">
+                <Col flex={1} md={12}>
+                    {isLogoLoaded ?
+                        <>
+                            <img src={logoThisProvinceURL} className="logo-province" alt={`logo ${normalizedProvince}`} />
+                            <div className="city-svg">
+                                <CitySVG />
+                            </div>
+                        </>
+                        :
+                        <Skeleton active />
+                    }
+                </Col>
+                <Col flex={1} md={12}>
+                    <Typography.Paragraph style={{ fontWeight: 'bold', fontSize: '1.3em' }}>
+                        Total Case di {isDataProvinceLoaded ? uppercaseEachWord(normalizedProvince) : "Loading.."}
+                    </Typography.Paragraph>
+
+                    <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
+                        {/* {Object.entries(totalCaseIndoData).map(item => */}
+                        {/* <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingTotal} /> */}
+                        <CaseItem caseCondition={"lalala"} number={2} isLoading={false} />
+                        <CaseItem caseCondition={"Sembuh"} number={2} isLoading={false} />
+                        <CaseItem caseCondition={"Dirawat"} number={2} isLoading={false} />
+                        <CaseItem caseCondition={"Meninggal"} number={2} isLoading={false} />
+
+                        {/* )} */}
+                    </Row>
+
+                    <Row justify="space-between">
+                        <Col>
+                            <Typography.Paragraph style={{ fontWeight: 'bold', fontSize: '1.3em' }} >
+                                Kasus Harian di {isDataProvinceLoaded ? uppercaseEachWord(normalizedProvince) : "Loading.."}
+                            </Typography.Paragraph>
+                        </Col>
+                        <Col style={{ fontWeight: 'bold' }}>
+                            {/* Per tanggal {dailyCaseIndoData?.tanggal} */}
+                        </Col>
+                    </Row>
+                    <Row justify="space-between" gutter={20} style={{ marginBottom: '2em' }}>
+                        {/* {Object.entries(dailyCaseIndoData).map(item => */}
+                        <CaseItem caseCondition={"lalala"} number={2} isLoading={false} />
+                        <CaseItem caseCondition={"Sembuh"} number={2} isLoading={false} />
+                        <CaseItem caseCondition={"Dirawat"} number={2} isLoading={false} />
+                        <CaseItem caseCondition={"Meninggal"} number={2} isLoading={false} />
+                        {/* )} */}
+                    </Row>
+                </Col>
             </Row>
+            <SearchComponent role="hospital" dataSource={[1, 2, 3, 4, 5, 6, 67]} />
+
         </div>
     );
 };
