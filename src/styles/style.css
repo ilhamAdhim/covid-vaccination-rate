@@ -51,6 +51,7 @@
 .global-page,
 .detail-province-page {
   padding: 2em 9em;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

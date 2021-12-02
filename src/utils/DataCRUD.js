@@ -31,7 +31,7 @@ export const getHospitalDetail = async (provID, cityID) => {
     return response.data
 }
 
-export const getHospitalCOVIDStats = async (hospitalID) => {
+export const getHospitalAvailability = async (hospitalID) => {
     let response = await axios.get(`https://rs-bed-covid-api.vercel.app/api/get-bed-detail?hospitalid=${hospitalID}&type=1`)
     return response.data
 }

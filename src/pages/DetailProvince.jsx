@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumb, Button, Col, Empty, Row, Skeleton, Typography } from 'antd';
+import { Breadcrumb, Col, Row, Skeleton, Typography } from 'antd';
 import { normalizeProvinceName, uppercaseEachWord } from '../utils/Common';
-import { getAllCitiesInProvince, getDailyAndTotalProvinceData, getListLogoProvince, getProvinceData } from '../utils/DataCRUD';
+import { getAllCitiesInProvince, getDailyAndTotalProvinceData, getHospitalDetail, getListLogoProvince, getProvinceData } from '../utils/DataCRUD';
 
 import CaseItem from '../components/CaseItem';
 import SearchComponent from '../components/SearchComponent';
@@ -11,15 +11,25 @@ import { ReactComponent as NotFoundSVG } from '../assets/404_image.svg';
 
 import '../styles/detail-province.css'
 import '../styles/svg-style.css'
+import EmptyResult from '../components/EmptyResult';
 
 const getProvinceName = () => {
     return window.location.pathname.split('/')[2].replace('-', ' ')
 }
 
+const sortByHospitalAmount = (a, b) => {
+    if (a?.rumahSakit?.length > b?.rumahSakit?.length) {
+        return -1;
+    } else {
+        return 1;
+    }
+}
+
 const DetailProvince = props => {
     const [normalizedProvince, setNormalizedProvince] = useState("");
     const [provID, setProvID] = useState("");
-    const [cityList, setCityList] = useState("");
+    const [cityList, setCityList] = useState([]);
+    const [hospitalList, setHospitalList] = useState([]);
 
     // Province Data
     const [provinceCaseData, setProvinceCaseData] = useState("");
@@ -32,6 +42,7 @@ const DetailProvince = props => {
 
     // State loading
     const [isLogoLoaded, setIsLogoLoaded] = useState(false);
+    const [isDataHospitalLoaded, setIsDataHospitalLoaded] = useState(false);
     const [isDataProvinceLoaded, setIsDataProvinceLoaded] = useState(false);
 
     useEffect(() => {
@@ -63,7 +74,7 @@ const DetailProvince = props => {
 
     const setIDProvince = useCallback(() => {
         if (normalizedProvince.length > 0) {
-            getProvinceData().then(response => setProvID(response?.provinces?.find(item => item.name.toLowerCase().includes(getProvinceName()))?.id))
+            getProvinceData().then(response => setProvID(response?.provinces?.find(item => item.name.toLowerCase() === getProvinceName())?.id))
         }
     }, [normalizedProvince])
 
@@ -90,6 +101,26 @@ const DetailProvince = props => {
         setProvinceDailyData(provinceCaseData?.penambahan)
     }, [provinceCaseData])
 
+    const getHospitalInEachCity = useCallback(() => {
+        // Fetch rumah sakit yang ada di masing2 kota
+        cityList?.map(item => {
+            setTimeout(
+                () => {
+                    getHospitalDetail(provID, item?.id).then(responseData => {
+                        if (responseData?.hospitals.length > 0)
+                            setHospitalList(prevValue => {
+                                // Remove duplicates amd sort
+                                return [...new Map([...prevValue, { kota: item.name, rumahSakit: responseData?.hospitals }]
+                                    .map(v => [v.kota, v])).values()]
+                                    .sort(sortByHospitalAmount)
+                            })
+                    })
+                }
+                , 500)
+        })
+        setIsDataHospitalLoaded(true)
+    }, [provID, cityList]);
+
     useEffect(() => {
         // Fetch ID Provinsi dari provinsi ini
         setIDProvince()
@@ -97,35 +128,23 @@ const DetailProvince = props => {
         getAllCities()
         // Fetch lambang provinsi
         setLogo()
+        // 
         getCaseDailyAndTotalProvince()
     }, [setIDProvince, getAllCities, setLogo, getCaseDailyAndTotalProvince]);
 
-    // TODO: Ini Dipakai untuk data rumah sakit
-    // useEffect(() => {
-    //     // Fetch rumah sakit yang ada di masing2 kota
-    //     console.log(provinceCaseData)
-    // }, [provinceCaseData]);
+    useEffect(() => {
+        getHospitalInEachCity()
+    }, [getHospitalInEachCity]);
 
     return (
         <div className="detail-province-page">
             {
                 provID === undefined ?
-                    <>
-                        <Empty
-                            image={<NotFoundSVG />}
-                            imageStyle={{ height: '300px' }}
-                            description={
-                                <Typography.Title level={5} style={{ marginTop: '2em' }}
-                                    children={`Provinsi ${getProvinceName()} tidak ditemukan`} />}
-                        />
-                        <Row justify="center" >
-                            <Col>
-                                <Link to="/">
-                                    <Button style={{ textAlign: 'center' }} className="btn-cta-2nd"> Kembali </Button>
-                                </Link>
-                            </Col>
-                        </Row>
-                    </> :
+                    <EmptyResult
+                        withButton={true}
+                        ImageSVG={<NotFoundSVG />}
+                        description={`Provinsi ${getProvinceName()} tidak ditemukan`} />
+                    :
                     <>
                         <Breadcrumb style={{ marginBottom: '3em', marginTop: '-2em' }}>
                             <Breadcrumb.Item>
@@ -185,7 +204,7 @@ const DetailProvince = props => {
                                 </Row>
                             </Col>
                         </Row>
-                        <SearchComponent role="hospital" dataSource={[1, 2, 3, 4, 5, 6, 67]} />
+                        <SearchComponent role="city" dataSource={isDataHospitalLoaded ? hospitalList : [1, 2, 3, 4, 5, 6, 67]} />
                     </>
             }
         </div>

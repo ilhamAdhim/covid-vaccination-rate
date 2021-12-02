@@ -17,7 +17,7 @@ import '../styles/landingpage.css'
 import '../styles/svg-style.css'
 
 const LandingPage = props => {
-    const [provinceData, setProvinceData] = useState([])
+    const [provinceData, setProvinceData] = useState([''])
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
 
@@ -25,7 +25,7 @@ const LandingPage = props => {
     const [isLoadingTotal, setIsLoadingTotal] = useState(true)
 
     useEffect(() => {
-        getProvinceData().then(item => setProvinceData(item))
+        getProvinceData().then(responseData => setProvinceData(responseData))
 
         getIndonesiaCOVIDStats().then(responseData => {
             setDailyCaseIndoData(responseData.penambahan)
@@ -35,10 +35,6 @@ const LandingPage = props => {
             setIsLoadingTotal(false)
         })
     }, []);
-
-    useEffect(() => {
-        console.log(dailyCaseIndoData)
-    }, [dailyCaseIndoData]);
 
     return (
         <>
@@ -110,7 +106,7 @@ const LandingPage = props => {
                     </Typography.Title>
                 </Row>
 
-                <CardList dataSource={[1, 2, 3, 4, 5, 6, 7, 8]} role="Hospital" />
+                <CardList dataSource={[1, 2, 3, 4, 5, 6, 7, 8]} role="hospital" />
 
                 {/* Bagian Search Provinsi */}
                 <SearchComponent role="provinsi" dataSource={provinceData} />

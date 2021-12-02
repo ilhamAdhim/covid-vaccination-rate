@@ -13,6 +13,7 @@ import "../styles/card-item.css"
 const CardItem = ({ role, itemObj }) => {
 
     if (role.toLowerCase() === "hospital") {
+        console.log(itemObj)
         return (
             <Card className="card-item">
                 <Row gutter={20} className="new-row">
@@ -61,7 +62,7 @@ const CardItem = ({ role, itemObj }) => {
                         </Typography.Text>
                     </Col>
                     <Col>
-                        <Link to={`/province/${itemObj.name.replace(' ', '-').toLowerCase()}`}>
+                        <Link to={`/province/${itemObj?.name?.replace(' ', '-').toLowerCase()}`}>
                             <Button>
                                 Detail
                             </Button>

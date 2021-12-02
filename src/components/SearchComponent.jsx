@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { Divider, Input, Row, Typography } from 'antd';
 
-import SearchResult from './SearchResult';
+import CardList from './CardList';
+import { ReactComponent as SearchProvinceSVG } from '../assets/search-province.svg';
+
 import { uppercaseFirst } from '../utils/Common';
 
 import '../styles/style.css'
@@ -10,10 +12,9 @@ import '../styles/searchbar.css'
 
 const { Search } = Input;
 const SearchComponent = ({ role, dataSource }) => {
-    console.log(dataSource)
     const [isSearching, setIsSearching] = useState(false)
     const [searchValue, setSearchValue] = useState('')
-    const [searchResult, setSearchResult] = useState([''])
+    const [searchResult, setSearchResult] = useState([])
 
     let placeholder = `Cari ${role} . . . `
 
@@ -42,12 +43,23 @@ const SearchComponent = ({ role, dataSource }) => {
                     style={{ width: '60%', padding: '2em' }} />
             </Row>
 
-            <SearchResult role={role} isSearching={isSearching} searchResult={searchResult} />
+            {!isSearching ?
+                role === "provinsi" ?
+                    <>
+                        <Row justify="center">
+                            <SearchProvinceSVG />
+                        </Row>
+                        <Typography.Title level={5}
+                            style={{ textAlign: 'center', marginTop: '1em' }}>
+                            Mulai Cari Sekarang
+                        </Typography.Title>
+                    </>
+                    :
+                    <CardList dataSource={dataSource} role={role} />
 
-            <Typography.Title level={5}
-                style={{ textAlign: 'center', marginTop: '1em' }}>
-                Mulai Cari Sekarang
-            </Typography.Title>
+                :
+                <CardList dataSource={searchResult} role={role} />
+            }
         </>
     );
 };
