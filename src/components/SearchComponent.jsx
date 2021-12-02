@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Divider, Input, Row, Typography } from 'antd';
+import { Button, Divider, Input, Row, Typography } from 'antd';
 
 import CardList from './CardList';
 import { ReactComponent as SearchProvinceSVG } from '../assets/search-province.svg';
@@ -11,7 +11,8 @@ import '../styles/style.css'
 import '../styles/searchbar.css'
 
 const { Search } = Input;
-const SearchComponent = ({ role, dataSource }) => {
+
+const SearchComponent = ({ role, dataSource, ...props }) => {
     const [isSearching, setIsSearching] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResult] = useState([])
@@ -30,8 +31,7 @@ const SearchComponent = ({ role, dataSource }) => {
         if (role === "provinsi")
             setSearchResult(dataSource?.provinces?.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase())))
         else {
-            // console.log("searching hospital")
-            setSearchResult(dataSource)
+            setSearchResult(dataSource?.filter(item => item.kota.toLowerCase().includes(searchValue.toLowerCase())))
         }
     }, [isSearching, searchValue, dataSource, role]);
 
@@ -55,10 +55,19 @@ const SearchComponent = ({ role, dataSource }) => {
                         </Typography.Title>
                     </>
                     :
-                    <CardList dataSource={dataSource} role={role} />
+                    <CardList
+                        role={role}
+                        isSearchResult={false}
+                        dataSource={dataSource}
+                        sampleData={props?.sampleData}
+                        loadMore={props?.loadMoreSample} />
 
                 :
-                <CardList dataSource={searchResult} role={role} />
+                <CardList
+                    role={role}
+                    isSearchResult={true}
+                    dataSource={searchResult}
+                />
             }
         </>
     );

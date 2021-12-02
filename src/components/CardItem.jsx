@@ -7,23 +7,20 @@ import {
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-import "../styles/style.css"
 import "../styles/card-item.css"
 
 const CardItem = ({ role, itemObj }) => {
 
     if (role.toLowerCase() === "hospital") {
-        console.log(itemObj)
         return (
             <Card className="card-item">
                 <Row gutter={20} className="new-row">
                     <Col>
                         <MedicineBoxOutlined className="icon-style" />
                     </Col>
-                    <Col>
-                        <Typography.Text className="text-bold">
-                            {/* {`Ini Hospital ${itemObj.value || itemObj}`} */}
-                            RS Umum Dharma Yadnya
+                    <Col style={{width : '85%'}}>
+                        <Typography.Text className="text-bold" ellipsis>
+                            { itemObj.name || `RS Umum Dharma Yadnya`}
                         </Typography.Text>
                     </Col>
                 </Row>
@@ -31,9 +28,9 @@ const CardItem = ({ role, itemObj }) => {
                     <Col>
                         <EnvironmentOutlined className="icon-style" />
                     </Col>
-                    <Col>
-                        <Typography.Text className="text-bold">
-                            Jl. WE.Supratman 256, Denpasar
+                    <Col style={{width : '85%'}}>
+                        <Typography.Text  ellipsis>
+                          {  itemObj.address || `Jl. WE.Supratman 256, Denpasar`}
                         </Typography.Text>
                     </Col>
                 </Row>
@@ -42,8 +39,8 @@ const CardItem = ({ role, itemObj }) => {
                         <PhoneOutlined className="icon-style" />
                     </Col>
                     <Col>
-                        <Typography.Text className="text-bold">
-                            08123456789
+                        <Typography.Text >
+                            {itemObj.phone || `08123456789`}
                         </Typography.Text>
                     </Col>
                 </Row>
@@ -63,7 +60,7 @@ const CardItem = ({ role, itemObj }) => {
                     </Col>
                     <Col>
                         <Link to={`/province/${itemObj?.name?.replace(' ', '-').toLowerCase()}`}>
-                            <Button>
+                            <Button className="btn-cta-2nd">
                                 Detail
                             </Button>
                         </Link>
