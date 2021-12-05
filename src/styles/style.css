@@ -73,6 +73,10 @@
   .detail-province-page {
     padding: 0 1em;
   }
+
+  .ant-divider-horizontal.ant-divider-with-text.colored-divider {
+    margin-top: 1em;
+  }
 }
 /* For medium screen */
 @media only screen and (max-width: 1024px) and (min-width: 641px) {
@@ -82,4 +86,5 @@
   .detail-province-page {
     padding: 0 1em;
   }
+  
 }

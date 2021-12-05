@@ -31,7 +31,7 @@ const cardItems = [
         id: 4,
         img: tidurCukupImage,
         title: 'Tidur Cukup dan Olahraga',
-        desc: 'Melakukan istirahat, menjalani gaya hidup sehat, tidak mengkonsumsi alkohol, tidak merokok melakukan olahraga dengan rutin adalah hal-hal yang dianjurkan dilakukan sebelum vaksin Covid-19.',
+        desc: 'Melakukan istirahat, menjalani gaya hidup sehat, dan melakukan olahraga dengan rutin adalah hal-hal yang dianjurkan dilakukan sebelum vaksin Covid-19.',
     },
     {
         id: 5,
@@ -43,7 +43,7 @@ const cardItems = [
         id: 6,
         img: cekPenyakitImage,
         title: 'Cek Penyakit yang Tak Boleh Vaksinasi',
-        desc: 'Untuk penderita Diabetes, vaksinasi bisa dilakukan jika kondisi kadar gulanya terkontrol. Sementara itu, penyintas kanker dapat tetap diberikan vaksin dengan syarat sudah tidak menjalani terapi imunosupresi.',
+        desc: 'Untuk penyitas kanker dapat melakukan vaksinasi dengan syarat sudah menjalani terapi imunosupresi. Untuk penderita diabetes kadar gulanya harus terkontrol.',
     },
 ]
 
