@@ -8,12 +8,11 @@ const VaccineTipsCardItem = (props) => {
     return (
         <>
             <Card
-                className='card-item'
-                style={{width: 340, height: 401, borderRadius: 20, backgroundColor: '#FFE2E2'}}
+                className='card-item card-item-style '
             >
                 <div style={{textAlign: 'center'}}>
 
-                <img src={props.img} style={{width: 200}} />
+                <img src={props.img} className='img-card-item-style'/>
 
                 <Typography.Title level={5}>
                     {props.title}

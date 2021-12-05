@@ -1,7 +1,33 @@
-ul {
-    /* list-style-image: url("../assets/"); */
-}
-
 .item {
     align-self: center;
+}
+
+/* For small screen */
+@media only screen and (max-width: 640px) {
+    .title-typography {
+        font-size: 32px !important;
+        margin: 0px !important;
+    }
+
+    .title-typography-2 {
+        font-size: 22px !important;
+    }
+
+    .vaccine-img {
+        width: 310px;
+    }
+
+    .center-item {
+        text-align: center;
+    }
+
+    .ul-style {
+        list-style-type: none;
+        padding-left: 0;
+        text-align: left;
+    }
+}
+  /* For medium screen */
+@media only screen and (max-width: 1024px) and (min-width: 641px) {
+
 }

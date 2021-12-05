@@ -1,32 +1,33 @@
 import React from 'react'
-import { Divider, Row, Col, Card, Typography } from 'antd';
+import { Row, Col, Card, Typography } from 'antd';
 import houseImage from '../assets/house.svg';
 import usingMaskImage from '../assets/using-mask.svg';
 import buildingsImage from '../assets/buildings.svg';
 import remindImage from '../assets/remind.svg';
+import '../styles/health-card-list.css';
 
 function HealthCardList() {
     return (
-        <Row className="tips-kesehatan-page" style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}} type="flex" align="middle">
-            <Row>
-                <Col flex={2} style={{display: 'inline-flex'}}>
+        <Row className="tips-kesehatan-page center-item" type="flex" align="middle">
+
+            <Row className='card-row-flex'>
+                <Col flex={2} className='card-col-flex'>
                         <Card
-                            className='card-item'
-                            style={{ width: 450, margin: '16px 14px', borderRadius: 20, backgroundColor: '#FFE2E2' }}
+                            className='card-item card-item-style-2'
                         >
-                            <Row style={{textAlign: 'center'}}>
-                                <Col style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <Row className='card-row-flex-title'>
+                                <Col className='center-item'>
                                     <Typography.Title level={5}>
                                         Tetap Berada di Rumah 
                                     </Typography.Title>
                                 </Col>
 
-                                <Col style={{marginRight: '0', marginLeft: 'auto'}}>
-                                    <img src={houseImage} style={{width: 200}} />
+                                <Col className='img-possition'>
+                                    <img src={houseImage} />
                                 </Col>
                             </Row>
 
-                            <Row>
+                            <Row style={{textAlign: 'left'}}>
                                 <Col>
                                     <Typography.Paragraph>
                                         Tetap di rumah kecuali untuk keadaan darurat
@@ -37,21 +38,20 @@ function HealthCardList() {
                         </Card>
                 </Col>
                     
-                <Col flex={3} style={{display: 'inline-flex'}}>
+                <Col flex={3} className='card-col-flex'>
 
                     <Card
-                            className='card-item'
-                            style={{ width: 600, margin: '16px 14px', borderRadius: 20, backgroundColor: '#FFE2E2' }}
+                            className='card-item card-item-style-1'
                         >
-                            <Row style={{textAlign: 'center'}}>
-                                <Col style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <Row className='card-row-flex-title'>
+                                <Col className='center-item'>
                                     <Typography.Title level={5}>
                                         Terapkan 5M
                                     </Typography.Title>
                                 </Col>
 
-                                <Col style={{marginRight: '0', marginLeft: 'auto'}}>
-                                    <img src={usingMaskImage} style={{width: 200}} />
+                                <Col className='img-possition'>
+                                    <img src={usingMaskImage} />
                                 </Col>
                             </Row>
 
@@ -71,48 +71,48 @@ function HealthCardList() {
                 </Col>
             </Row>
 
-            <Row>
-                <Col flex={3} style={{display: 'inline-flex'}}>
+            <Row className='card-row-flex'>
+                <Col flex={3} className='card-col-flex'>
                     <Card
-                            className='card-item'
-                            style={{ width: 600, margin: '16px 14px', borderRadius: 20, backgroundColor: '#FFE2E2' }}
+                            className='card-item card-item-style-1'
                         >
-                            <Row style={{textAlign: 'center'}}>
-                                <Col style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <Row className='card-row-flex-title'>
+                                <Col className='center-item'>
                                     <Typography.Title level={5}>
                                         25% Maximum
                                     </Typography.Title>
                                 </Col>
 
-                                <Col style={{marginRight: '0', marginLeft: 'auto'}}>
-                                    <img src={buildingsImage} style={{width: 200}} />
+                                <Col className='img-possition'>
+                                    <img src={buildingsImage} />
                                 </Col>
                             </Row>
 
                             <Row style={{textAlign: 'left'}}>
-                                <Typography.Paragraph>
-                                    Sesuai Pergub Nomor 796 Tahun 2021, 
-                                    seluruh kegiatan sektor non esensial harus beroperasi dengan kapasitas maksimal 25% dengan protokol kesehatan yang ketat.
-                                </Typography.Paragraph>
+                                <Col>
+                                    <Typography.Paragraph className='card-padding'>
+                                        Sesuai Pergub Nomor 796 Tahun 2021, 
+                                        seluruh kegiatan sektor non esensial harus beroperasi dengan kapasitas maksimal 25% dengan protokol kesehatan yang ketat.
+                                    </Typography.Paragraph>
+                                </Col>
                             </Row>
 
                         </Card>
                 </Col>
                     
-                <Col flex={2} style={{display: 'inline-flex'}}>
+                <Col flex={2} className='card-col-flex'>
                     <Card
-                            className='card-item'
-                            style={{ width: 450, margin: '16px 14px', borderRadius: 20, backgroundColor: '#FFE2E2' }}
+                            className='card-item card-item-style-2'
                         >
-                            <Row style={{textAlign: 'center'}}>
-                                <Col style={{display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <Row className='card-row-flex-title'>
+                                <Col className='center-item'>
                                     <Typography.Title level={5}>
                                         Saling Mengingatkan
                                     </Typography.Title>
                                 </Col>
 
-                                <Col style={{marginRight: '0', marginLeft: 'auto'}}>
-                                    <img src={remindImage} style={{width: 200}} />
+                                <Col className='img-possition'>
+                                    <img src={remindImage} />
                                 </Col>
                             </Row>
 
