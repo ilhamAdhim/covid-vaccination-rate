@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import CardList from '../components/CardList';
 
 import CaseItem from '../components/CaseItem';
-import { getIndonesiaCOVIDStats, getProvinceData } from '../utils/DataCRUD';
+import { getHospitalDetail, getIndonesiaCOVIDStats, getProvinceData } from '../utils/DataCRUD';
 
 import { ReactComponent as CustomBlobSVG } from '../assets/custom-blob.svg';
 import { ReactComponent as IndonesiaSVG } from '../assets/indonesia-map.svg';
@@ -20,9 +20,11 @@ const LandingPage = props => {
     const [provinceData, setProvinceData] = useState([''])
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
+    const [hospitalMalang, setHospitalMalang] = useState([])
 
     const [isLoadingDaily, setIsLoadingDaily] = useState(true)
     const [isLoadingTotal, setIsLoadingTotal] = useState(true)
+    const [isHospitalLoaded, setIsHospitalLoaded] = useState(false)
 
     useEffect(() => {
         getProvinceData().then(responseData => setProvinceData(responseData))
@@ -34,6 +36,16 @@ const LandingPage = props => {
             setIsLoadingDaily(false)
             setIsLoadingTotal(false)
         })
+
+        getHospitalDetail("35prop", 3573)
+            .then(responseData => {
+                setIsHospitalLoaded(true)
+                setHospitalMalang(responseData?.hospitals)
+            })
+    }, []);
+
+    useEffect(() => {
+        document.title = "COVID-19 Vaccination Web"
     }, []);
 
     return (
@@ -106,10 +118,10 @@ const LandingPage = props => {
                     </Typography.Title>
                 </Row>
 
-                <CardList dataSource={[1, 2, 3, 4, 5, 6, 7, 8]} role="hospital" isLoading={false} />
+                <CardList dataSource={hospitalMalang} role="hospital" isDataLoaded={isHospitalLoaded} />
 
                 {/* Bagian Search Provinsi */}
-                <SearchComponent role="provinsi" dataSource={provinceData} />
+                <SearchComponent role="provinsi" dataSource={provinceData} isDataLoaded={true} />
             </div >
             <Footer />
         </>

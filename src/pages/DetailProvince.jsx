@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Col, Row, Skeleton, Typography } from 'antd';
 import { normalizeProvinceName, uppercaseEachWord } from '../utils/Common';
@@ -56,7 +56,6 @@ const DetailProvince = props => {
         let province = normalizeProvinceName(getProvinceName())
         setNormalizedProvince(province)
 
-        console.log(getProvinceName())
         // Fetch logo province
         getListLogoProvince()
             .then(responseData => setLogoList(responseData))
@@ -72,12 +71,15 @@ const DetailProvince = props => {
                 setIsDataProvinceLoaded(true)
             })
 
+        document.title = `${uppercaseEachWord(province)}- COVID-19 Vaccination Web`
+
     }, []);
 
     const setIDProvince = useCallback(() => {
         if (normalizedProvince.length > 0) {
             getProvinceData().then(response => setProvID(response?.provinces?.find(item => item.name.toLowerCase() === getProvinceName())?.id))
         }
+
     }, [normalizedProvince])
 
     const setLogo = useCallback(() => {
@@ -104,20 +106,20 @@ const DetailProvince = props => {
     }, [provinceCaseData])
 
     const getHospitalInEachCity = useCallback(() => {
-        Promise.all(cityList?.map((item) => {
+        cityList?.map((item) => {
             setTimeout(
                 () => {
                     getHospitalDetail(provID, item?.id).then(responseData => {
                         // if (responseData?.hospitals.length > 0)
                         setHospitalList(prevValue =>
-                            // Remove duplicates amd sort
+                            // Remove duplicates 
                             [...new Map([...prevValue, { kota: item.name, rumahSakit: responseData?.hospitals }]
                                 .map(v => [v.kota, v])).values()]
                         )
                     })
                 }
                 , 500)
-        }))
+        })
     }, [provID, cityList]);
 
 
@@ -143,12 +145,12 @@ const DetailProvince = props => {
     }
 
     useEffect(() => {
-        // Sort cities by hospital amount
+        // Sort cities by hospital amount and remove cities that has no hospital
         if (cityList.length !== 0 && cityList.length === hospitalList.length) {
             setSampleHospitalList(hospitalList.filter(item => item?.rumahSakit?.length > 0).sort(sortByHospitalAmount).slice(0, 3))
             setIsDataHospitalLoaded(true)
         }
-    }, [hospitalList])
+    }, [cityList.length, hospitalList])
 
     return (
         <>

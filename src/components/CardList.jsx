@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, List, Typography, Divider, Button, Spin } from 'antd';
 import CardItem from './CardItem';
 
@@ -7,6 +7,9 @@ import EmptyResult from './EmptyResult';
 
 
 const CardList = ({ isDataLoaded, dataSource, role, sampleData = [], ...props }) => {
+    useEffect(() => {
+        console.log(dataSource)
+    }, [dataSource]);
 
     // If data is loading
     if (!isDataLoaded) {
@@ -93,22 +96,24 @@ const CardList = ({ isDataLoaded, dataSource, role, sampleData = [], ...props })
                 </>
             )
         case "provinsi":
-            // array of N elements, where N is the number of rows needed
-            const rowsProv = [...Array(Math.ceil(dataSource.length / 4))];
-
-            // chunk the items into the array of rows. 
-            // 1 rows 3 columns
-            const listRowsProv = rowsProv.map((row, idx) => dataSource.slice(idx * 3, idx * 3 + 3));
             return (
-                listRowsProv.map((row, idx) => (
-                    <Row key={idx} justify="space-between" gutter={20}>
-                        {row.map(item =>
-                            <Col style={{ textAlign: 'center', paddingTop: '2em' }}
-                                key={item.id || item}> <CardItem itemObj={item} role={role} />
-                            </Col>
-                        )}
-                    </Row>
-                ))
+                <List
+                    grid={{
+                        gutter: 16,
+                        xs: 1,
+                        sm: 2,
+                        md: 2,
+                        lg: 3,
+                        xl: 3,
+                        xxl: 3,
+                    }}
+                    dataSource={dataSource}
+                    renderItem={item => (
+                        <List.Item key={item?.id}>
+                            <CardItem itemObj={item} role={role} />
+                        </List.Item>
+                    )}
+                />
             )
     }
 

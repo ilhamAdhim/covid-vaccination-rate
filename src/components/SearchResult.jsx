@@ -25,7 +25,7 @@ const SearchResult = ({ isSearching, dataSource, isDataLoaded, sampleData, loadM
                         :
                         <CardList
                             role={role}
-                            dataSource={dataSource}
+                            dataSource={searchResult}
                             isDataLoaded={isDataLoaded}
                             sampleData={sampleData}
                             loadMore={loadMoreSample} />

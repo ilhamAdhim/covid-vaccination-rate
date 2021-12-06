@@ -27,10 +27,6 @@ const SearchComponent = ({ role, dataSource, isDataLoaded, ...props }) => {
         setSearchValue(value)
     }
 
-    useEffect(() => {
-        console.log(isDataLoaded)
-    }, [isDataLoaded]);
-
     let roleUcFirst = uppercaseFirst(role)
 
     const loadMoreSampleSearch = () => {
