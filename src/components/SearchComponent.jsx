@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import { Button, Divider, Input, Row, Typography } from 'antd';
+import { Divider, Input, Row, } from 'antd';
 
-import CardList from './CardList';
-import { ReactComponent as SearchProvinceSVG } from '../assets/search-province.svg';
+import SearchResult from './SearchResult';
 
 import { uppercaseFirst } from '../utils/Common';
 
@@ -12,10 +11,13 @@ import '../styles/searchbar.css'
 
 const { Search } = Input;
 
-const SearchComponent = ({ role, dataSource, ...props }) => {
+const SearchComponent = ({ role, dataSource, isDataLoaded, ...props }) => {
+
     const [isSearching, setIsSearching] = useState(false)
+
     const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResult] = useState([])
+    const [sampleSearchResult, setSampleSearchResult] = useState([])
 
     let placeholder = `Cari ${role} . . . `
 
@@ -25,15 +27,32 @@ const SearchComponent = ({ role, dataSource, ...props }) => {
         setSearchValue(value)
     }
 
+    useEffect(() => {
+        console.log(isDataLoaded)
+    }, [isDataLoaded]);
+
     let roleUcFirst = uppercaseFirst(role)
+
+    const loadMoreSampleSearch = () => {
+        // get next 3 cities
+        setSampleSearchResult((prev) => [...prev, ...searchResult?.sort(setSampleSearchResult).slice(prev.length, prev.length + 3)])
+    }
 
     useEffect(() => {
         if (role === "provinsi")
             setSearchResult(dataSource?.provinces?.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase())))
-        else {
+        else
             setSearchResult(dataSource?.filter(item => item.kota.toLowerCase().includes(searchValue.toLowerCase())))
-        }
+
     }, [isSearching, searchValue, dataSource, role]);
+
+    const getSampleResult = useCallback(() => {
+        setSampleSearchResult(searchResult?.slice(0, 3))
+    }, [isSearching, searchResult])
+
+    useEffect(() => {
+        getSampleResult()
+    }, [getSampleResult]);
 
     return (
         <>
@@ -43,32 +62,18 @@ const SearchComponent = ({ role, dataSource, ...props }) => {
                     style={{ width: '60%', padding: '2em' }} />
             </Row>
 
-            {!isSearching ?
-                role === "provinsi" ?
-                    <>
-                        <Row justify="center">
-                            <SearchProvinceSVG />
-                        </Row>
-                        <Typography.Title level={5}
-                            style={{ textAlign: 'center', marginTop: '1em' }}>
-                            Mulai Cari Sekarang
-                        </Typography.Title>
-                    </>
-                    :
-                    <CardList
-                        role={role}
-                        isSearchResult={false}
-                        dataSource={dataSource}
-                        sampleData={props?.sampleData}
-                        loadMore={props?.loadMoreSample} />
+            <SearchResult
+                role={role}
+                isSearching={isSearching}
+                dataSource={dataSource}
+                isDataLoaded={isDataLoaded}
+                sampleData={props?.sampleData}
+                loadMoreSample={props?.loadMoreSample}
 
-                :
-                <CardList
-                    role={role}
-                    isSearchResult={true}
-                    dataSource={searchResult}
-                />
-            }
+                searchResult={searchResult}
+                sampleSearchResult={sampleSearchResult}
+                loadMoreSampleSearch={loadMoreSampleSearch}
+            />
         </>
     );
 };

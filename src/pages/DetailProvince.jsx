@@ -104,20 +104,20 @@ const DetailProvince = props => {
     }, [provinceCaseData])
 
     const getHospitalInEachCity = useCallback(() => {
-        cityList?.map(item => {
+        Promise.all(cityList?.map((item) => {
             setTimeout(
                 () => {
                     getHospitalDetail(provID, item?.id).then(responseData => {
-                        if (responseData?.hospitals.length > 0)
-                            setHospitalList(prevValue =>
-                                // Remove duplicates amd sort
-                                [...new Map([...prevValue, { kota: item.name, rumahSakit: responseData?.hospitals }]
-                                    .map(v => [v.kota, v])).values()]
-                            )
+                        // if (responseData?.hospitals.length > 0)
+                        setHospitalList(prevValue =>
+                            // Remove duplicates amd sort
+                            [...new Map([...prevValue, { kota: item.name, rumahSakit: responseData?.hospitals }]
+                                .map(v => [v.kota, v])).values()]
+                        )
                     })
                 }
                 , 500)
-        })
+        }))
     }, [provID, cityList]);
 
 
@@ -140,14 +140,14 @@ const DetailProvince = props => {
     const loadMoreSample = () => {
         // get next 3 cities
         setSampleHospitalList((prev) => [...prev, ...hospitalList?.sort(sortByHospitalAmount).slice(prev.length, prev.length + 3)])
-
     }
 
     useEffect(() => {
-        // Sort 
-        setSampleHospitalList(hospitalList?.sort(sortByHospitalAmount).slice(0, 3))
-        setIsDataHospitalLoaded(true)
-
+        // Sort cities by hospital amount
+        if (cityList.length !== 0 && cityList.length === hospitalList.length) {
+            setSampleHospitalList(hospitalList.filter(item => item?.rumahSakit?.length > 0).sort(sortByHospitalAmount).slice(0, 3))
+            setIsDataHospitalLoaded(true)
+        }
     }, [hospitalList])
 
     return (
@@ -222,7 +222,9 @@ const DetailProvince = props => {
                             <SearchComponent
                                 role="kota"
                                 dataSource={hospitalList}
-                                sampleData={sampleHospitalList} loadMoreSample={loadMoreSample}
+                                sampleData={sampleHospitalList}
+                                isDataLoaded={isDataHospitalLoaded}
+                                loadMoreSample={loadMoreSample}
                             />
                         </>
                 }

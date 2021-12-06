@@ -106,7 +106,7 @@ const LandingPage = props => {
                     </Typography.Title>
                 </Row>
 
-                <CardList dataSource={[1, 2, 3, 4, 5, 6, 7, 8]} role="hospital" />
+                <CardList dataSource={[1, 2, 3, 4, 5, 6, 7, 8]} role="hospital" isLoading={false} />
 
                 {/* Bagian Search Provinsi */}
                 <SearchComponent role="provinsi" dataSource={provinceData} />

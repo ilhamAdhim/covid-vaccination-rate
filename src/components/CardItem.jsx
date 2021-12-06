@@ -60,7 +60,7 @@ const CardItem = ({ role, itemObj }) => {
                     </Col>
                     <Col>
                         <Link to={`/province/${itemObj?.name?.replace(' ', '-').toLowerCase()}`}>
-                            <Button className="btn-cta-2nd">
+                            <Button>
                                 Detail
                             </Button>
                         </Link>
