@@ -30,7 +30,7 @@ function HealthCardList() {
                             <Row style={{textAlign: 'left'}}>
                                 <Col>
                                     <Typography.Paragraph>
-                                        Tetap di rumah kecuali untuk keadaan darurat
+                                        Tetaplah di rumah dan jaga kesehatan karena virus corona dapat menular dengan mudah kepada mereka yang memiliki imun rendah.
                                     </Typography.Paragraph>
                                 </Col>
                             </Row>
