@@ -12,3 +12,15 @@
 .ant-input-wrapper.ant-input-group {
   box-shadow: 0 0 5pt 0 #d3d3d3;
 }
+
+.ant-input-group-wrapper.ant-input-search.search-province {
+  width: 60%;
+  padding: 2em;
+}
+
+/* For small screen */
+@media only screen and (max-width: 641px) {
+  .ant-input-group-wrapper.ant-input-search.search-province {
+    width: 100%;
+  }
+}

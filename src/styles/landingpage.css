@@ -9,3 +9,7 @@
   margin: auto;
   display: block;
 }
+
+body {
+  overflow-x: hidden;
+}

@@ -2382,7 +2382,7 @@
   "resolved" "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz"
   "version" "5.2.0"
 
-"antd@^4.17.1":
+"antd@^4.16.13", "antd@^4.17.1":
   "integrity" "sha512-GNVuVnWJjFE1r3AGYc7vhy+gzlDAimAAZMTNCZdAncLBDN7gCTrf8euSb+C0TEqr7UV26yNGBQ9yGoeUcHUdSA=="
   "resolved" "https://registry.npmjs.org/antd/-/antd-4.17.1.tgz"
   "version" "4.17.1"
@@ -7300,6 +7300,11 @@
   dependencies:
     "lodash._reinterpolate" "^3.0.0"
 
+"lodash.throttle@^4.1.1":
+  "integrity" "sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ="
+  "resolved" "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
+  "version" "4.1.1"
+
 "lodash.uniq@^4.5.0":
   "integrity" "sha1-0CJTc662Uq3BvILklFM5qEJ1R3M="
   "resolved" "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
@@ -10219,6 +10224,13 @@
   dependencies:
     "is-core-module" "^2.0.0"
     "path-parse" "^1.0.6"
+
+"responsive-ant-menu@^2.0.3":
+  "integrity" "sha512-J+zF2xg2AhHF0XfT8PCCeysltZzgrEv1BmibUUFK+7UTGHsDt8fa5e2VneQPzne79bPC8Hmh+OlYGRKJaU05qw=="
+  "resolved" "https://registry.npmjs.org/responsive-ant-menu/-/responsive-ant-menu-2.0.3.tgz"
+  "version" "2.0.3"
+  dependencies:
+    "lodash.throttle" "^4.1.1"
 
 "ret@~0.1.10":
   "integrity" "sha512-TTlYpa+OL+vMMNG24xSlQGEJ3B/RzEfUlLct7b5G/ytav+wPrplCpVMFuwzXbkecJrb6IYo1iFb0S9v37754mg=="

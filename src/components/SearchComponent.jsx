@@ -55,7 +55,7 @@ const SearchComponent = ({ role, dataSource, isDataLoaded, ...props }) => {
             <Divider className="colored-divider"> {`Cari ${roleUcFirst}`} </Divider>
             <Row justify="center">
                 <Search className="search-province" placeholder={placeholder} allowClear onSearch={onSearch}
-                    style={{ width: '60%', padding: '2em' }} />
+                    />
             </Row>
 
             <SearchResult

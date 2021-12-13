@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     BrowserRouter as Router,
@@ -14,33 +14,73 @@ import DetailProvince from '../pages/DetailProvince';
 
 import '../styles/navbar.css'
 import { Col, Row } from 'antd';
+import useWindowDimensions from '../hooks/useWindowDimensions';
+import { MenuUnfoldOutlined, UpOutlined } from '@ant-design/icons';
+
+const routes = [
+    {
+        link: '/',
+        name: 'Home'
+    },
+    {
+        link: '/tips-kesehatan',
+        name: 'Tips Kesehatan'
+    },
+    {
+        link: '/global',
+        name: 'Global'
+    }
+]
 
 const Navbar = props => {
-    // TODO : Ini belum ada logonya
+    const [toggle, setToggle] = useState(true)
+    const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+    const { width, height } = useWindowDimensions();
+
+    useEffect(() => {
+        if (width < 641)
+            setIsSmallScreen(true)
+        else
+            setIsSmallScreen(false)
+    }, [width]);
+
+    const onToggle = () => setToggle(prevToggleVal => !prevToggleVal)
 
     return (
         <Router>
-            <Row justify="space-around" style={{ marginBottom: '2em' }} id="navbar">
-                <Col flex={2}>
+            <Row justify="space-around" gutter={20} style={{ marginBottom: '2em' }} id="navbar">
+                <Col span={8}>
                     Logo
                 </Col>
-                <Col flex={0.5}>
-                    <Row justify="space-around">
-                        <Col>
-                            <Link to="/">
-                                <p className="menu">Home</p>
-                            </Link>
-                        </Col>
-                        <Col>
-                            <Link to="/tips-kesehatan">
-                                <p className="menu">Tips Kesehatan</p>
-                            </Link>
-                        </Col>
-                        <Col>
-                            <Link to="/global">
-                                <p className="menu">Global</p>
-                            </Link>
-                        </Col>
+                {isSmallScreen &&
+                    <Col span={16} className="btn-container">
+                        <button onClick={onToggle} className="btn-small-screen">
+                            {toggle ?
+                                <UpOutlined />
+                                :
+                                <MenuUnfoldOutlined />
+                            }
+                        </button>
+                    </Col>
+                }
+
+                <Col span={isSmallScreen ? 24 : 8}
+                    style={{
+                        display:
+                            isSmallScreen ?
+                                (toggle ? 'block' : 'none')
+                                : 'inline-block'
+                    }}>
+
+                    <Row justify={isSmallScreen ? "center" : "space-around"}>
+                        {routes.map(item =>
+                            <Col span={isSmallScreen ? 24 : 8} style={{ textAlign: 'center' }}>
+                                <Link to={item.link}>
+                                    <p className="menu">{item.name}</p>
+                                </Link>
+                            </Col>
+                        )}
                     </Row>
                 </Col>
             </Row>

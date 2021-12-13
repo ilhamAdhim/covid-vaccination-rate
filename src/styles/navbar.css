@@ -31,3 +31,23 @@
 .menu:hover {
   color: #ff725e;
 }
+
+/* For small screen */
+@media only screen and (max-width: 641px) {
+  .btn-small-screen {
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    float: right;
+  }
+
+  .menu {
+    font-size: large;
+  }
+
+  #navbar {
+    padding: 0 2em;
+  }
+}
