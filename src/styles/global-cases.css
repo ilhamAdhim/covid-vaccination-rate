@@ -1,0 +1,21 @@
+.bg-site {
+    background-image: url('../assets/world.svg');
+    background-size: cover;
+    height: 130vh;
+}
+
+.center-item {
+    text-align: center !important;
+}
+
+.margin-btm-text {
+    margin: 0 25%;
+}
+
+/* For small screen */
+@media only screen and (max-width: 640px) {
+    .margin-btm-text {
+        margin: 0 5%;
+        padding-top: 5%;
+    }
+}

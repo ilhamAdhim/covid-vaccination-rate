@@ -40,3 +40,8 @@ export const getListLogoProvince = async () => {
     let response = await axios.get(`https://feriirawan-api.herokuapp.com/list/symbols/province/150`)
     return response.data
 }
+
+export const getGlobalCOVIDStats = async () => {
+    let response = await axios.get(`https://disease.sh/v3/covid-19/all`)
+    return response.data
+}
