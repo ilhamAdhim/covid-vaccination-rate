@@ -4,9 +4,10 @@ import HeaderJumbotron from '../components/HeaderJumbotron';
 import SearchComponent from '../components/SearchComponent';
 import Footer from '../components/Footer';
 import CardList from '../components/CardList';
+import VisualizeBarChart from '../components/charts/VisualizeBarChart';
 
 import CaseItem from '../components/CaseItem';
-import { getHospitalDetail, getIndonesiaCOVIDStats, getProvinceData } from '../utils/DataCRUD';
+import { getHospitalDetail, getIndonesiaCOVIDStats, getLastWeekCOVIDGraph, getProvinceData } from '../utils/DataCRUD';
 
 import { ReactComponent as CustomBlobSVG } from '../assets/custom-blob.svg';
 import { ReactComponent as IndonesiaSVG } from '../assets/indonesia-map.svg';
@@ -15,12 +16,15 @@ import logo from '../assets/mockup-graph.png'
 import '../styles/style.css'
 import '../styles/landingpage.css'
 import '../styles/svg-style.css'
+import { getDayName, getFormattedDate } from '../utils/Common';
 
 const LandingPage = props => {
     const [provinceData, setProvinceData] = useState([''])
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
     const [hospitalMalang, setHospitalMalang] = useState([])
+    
+    const [lastMonthGraph, setLastMonthGraph] = useState([])
 
     const [isLoadingDaily, setIsLoadingDaily] = useState(true)
     const [isLoadingTotal, setIsLoadingTotal] = useState(true)
@@ -35,6 +39,17 @@ const LandingPage = props => {
 
             setIsLoadingDaily(false)
             setIsLoadingTotal(false)
+        })
+
+        getLastWeekCOVIDGraph().then(responseData => {
+            let updatedData = responseData.map(item => {
+                return {
+                    ...item,
+                    tanggal : getFormattedDate( new Date(item.tanggal).toLocaleDateString())
+                }
+            })
+
+            setLastMonthGraph(updatedData)
         })
 
         getHospitalDetail("35prop", 3573)
@@ -101,12 +116,14 @@ const LandingPage = props => {
                 </Row>
 
                 {/* Ini grafik kasus covid19 hari ini dan grafik prediksi vaksinasi COVID-19 */}
-                <Row className="new-row" >
-                    <Col flex="1">
-                        <Divider className="normal-divider" > Pantauan COVID-19 Hari Ini </Divider>
-                        <img src={logo} alt="lalaa" width={600} className="img-center" />
+                <Row className="new-row" justify="center">
+                    <Col>
+                        <Divider className="normal-divider" > Pantauan COVID-19 Seminggu Terakhir </Divider>
+                        <VisualizeBarChart data={lastMonthGraph}/>
                     </Col>
-                    <Col flex="1">
+                </Row>
+                <Row className="new-row" >
+                    <Col flex="2">
                         <Divider className="normal-divider" > Prediksi Vaksinasi COVID-19 </Divider>
                         <img src={logo} alt="lalaa" width={600} className="img-center" />
                     </Col>

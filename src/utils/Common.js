@@ -28,3 +28,17 @@ export const uppercaseEachWord = (inputWord) => {
     }
     else return inputWord
 }
+
+export const getDayName = (dateStr, locale) => {
+    let date = new Date(dateStr);
+    return date.toLocaleDateString(locale, { weekday: 'long' });
+}
+
+export const getFormattedDate = (dateStr) => {
+    let convertedDate = new Date(dateStr);
+    let month = convertedDate.getMonth() + 1;
+    let day = convertedDate.getDate();
+    let year = convertedDate.getFullYear();
+
+    return `${day}/${month}/${year}`
+}
