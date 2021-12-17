@@ -12,6 +12,9 @@
   z-index: -1;
 }
 
+.svg-indonesia-landing-page svg {
+  width: 95%;
+}
 /* For small screen */
 @media only screen and (max-width: 640px) {
   .city-svg svg {
@@ -20,6 +23,13 @@
     height: 200px;
     width: 100%;
     z-index: -1;
+  }
+
+  .svg-blob-landing-page svg {
+    display: none;
+  }
+  .svg-jumbotron svg {
+    height: 280px;
   }
 }
 /* For medium screen */
@@ -30,5 +40,9 @@
     height: 200px;
     width: 100%;
     z-index: -1;
+  }
+
+  .svg-blob-landing-page svg {
+    display: none;
   }
 }

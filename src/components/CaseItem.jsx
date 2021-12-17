@@ -5,6 +5,7 @@ import { uppercaseFirst } from '../utils/Common';
 import '../styles/style.css'
 
 const CaseItem = ({ caseCondition, number, isLoading }) => {
+    console.log("wkowk")
     let uppercasedCondition = uppercaseFirst(caseCondition)
     let excludeCondition = ["tanggal", "created", "lastUpdate"]
 
@@ -18,7 +19,7 @@ const CaseItem = ({ caseCondition, number, isLoading }) => {
     return (
         <>
             {!excludeCondition.includes(caseCondition) ?
-                <Col flex={1}>
+                <Col>
                     {isLoading ?
                         <Skeleton active></Skeleton>
                         :

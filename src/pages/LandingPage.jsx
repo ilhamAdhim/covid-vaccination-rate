@@ -1,4 +1,4 @@
-import { Col, Divider, Row, Typography } from 'antd';
+import { Card, Col, Divider, Row, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import HeaderJumbotron from '../components/HeaderJumbotron';
 import SearchComponent from '../components/SearchComponent';
@@ -16,14 +16,14 @@ import logo from '../assets/mockup-graph.png'
 import '../styles/style.css'
 import '../styles/landingpage.css'
 import '../styles/svg-style.css'
-import { getDayName, getFormattedDate } from '../utils/Common';
+import { getFormattedDate } from '../utils/Common';
 
 const LandingPage = props => {
     const [provinceData, setProvinceData] = useState([''])
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
     const [hospitalMalang, setHospitalMalang] = useState([])
-    
+
     const [lastMonthGraph, setLastMonthGraph] = useState([])
 
     const [isLoadingDaily, setIsLoadingDaily] = useState(true)
@@ -45,13 +45,14 @@ const LandingPage = props => {
             let updatedData = responseData.map(item => {
                 return {
                     ...item,
-                    tanggal : getFormattedDate( new Date(item.tanggal).toLocaleDateString())
+                    tanggal: getFormattedDate(new Date(item.tanggal).toLocaleDateString())
                 }
             })
 
             setLastMonthGraph(updatedData)
         })
 
+        // ? Default : Kota Malang
         getHospitalDetail("35prop", 3573)
             .then(responseData => {
                 setIsHospitalLoaded(true)
@@ -76,37 +77,37 @@ const LandingPage = props => {
                 </Row>
 
                 {/* Ini bagian map dan statistiknya */}
-                <Row className="new-row">
-                    <Col flex="2" sm={{ span: 12 }}>
+                <Row className="new-row" justify="center">
+                    <Col sm={24} md={12} >
                         <div className="svg-blob-landing-page">
                             <CustomBlobSVG />
                         </div>
-                        <IndonesiaSVG />
+                        <div className="svg-indonesia-landing-page">
+                            <IndonesiaSVG />
+                        </div>
 
                     </Col>
-                    <Col flex="2" >
-                        <Typography.Title level={4}>
+                    <Col sm={24} md={12} >
+                        <Typography.Title className="text-total-case-landing-page" level={4} >
                             Total Case di Indonesia
                         </Typography.Title>
 
-                        <Row justify="space-between" gutter={20} className="new-row">
+                        <Row justify="center" gutter={[20, 20]} className="new-row">
                             {Object.entries(totalCaseIndoData).map(item =>
                                 <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingTotal} />
                             )}
                         </Row>
-                        <Row justify="space-between" className="new-row">
-                            <Col>
-                                <Typography.Title level={4} >
-                                    Kasus Harian di Indonesia
-                                </Typography.Title>
-                            </Col>
-                            <Col >
-                                <Typography.Title level={5}>
-                                    Per tanggal {dailyCaseIndoData?.tanggal}
-                                </Typography.Title>
-                            </Col>
-                        </Row>
-                        <Row justify="space-between" gutter={20} className="new-row">
+
+                        <div className="text-daily-case-landing-page">
+                            <Typography.Title level={4} >
+                                Kasus Harian di Indonesia
+                            </Typography.Title>
+                            <Typography.Title level={5}>
+                                Per tanggal {dailyCaseIndoData?.tanggal}
+                            </Typography.Title>
+                        </div>
+
+                        <Row justify="center" gutter={[20, 20]} className="new-row">
                             {Object.entries(dailyCaseIndoData).map(item =>
                                 <CaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingDaily} />
                             )}
@@ -119,11 +120,11 @@ const LandingPage = props => {
                 <Row className="new-row" justify="center">
                     <Col>
                         <Divider className="normal-divider" > Pantauan COVID-19 Seminggu Terakhir </Divider>
-                        <VisualizeBarChart data={lastMonthGraph}/>
+                        <VisualizeBarChart data={lastMonthGraph} />
                     </Col>
                 </Row>
-                <Row className="new-row" >
-                    <Col flex="2">
+                <Row className="new-row" justify="center" >
+                    <Col>
                         <Divider className="normal-divider" > Prediksi Vaksinasi COVID-19 </Divider>
                         <img src={logo} alt="lalaa" width={600} className="img-center" />
                     </Col>

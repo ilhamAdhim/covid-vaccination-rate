@@ -13,3 +13,23 @@
 body {
   overflow-x: hidden;
 }
+
+.text-total-case-landing-page,
+.text-daily-case-landing-page {
+  text-align: center;
+}
+
+.text-total-case-landing-page {
+  margin-top: -2em;
+}
+
+.text-daily-case-landing-page {
+  margin-top: 2em;
+}
+
+/* For small screen */
+@media only screen and (max-width: 641px) {
+  .text-total-case-landing-page {
+    margin-top: 2em;
+  }
+}

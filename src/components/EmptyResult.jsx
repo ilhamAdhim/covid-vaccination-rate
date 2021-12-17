@@ -7,7 +7,7 @@ const EmptyResult = ({ ImageSVG, description, withButton = false }) => {
         <>
             <Empty
                 image={ImageSVG}
-                imageStyle={{ height: '300px' }}
+                imageStyle={{ height: '280px' }}
                 description={
                     <Typography.Title level={5} style={{ marginTop: '2em' }}
                         children={description} />}

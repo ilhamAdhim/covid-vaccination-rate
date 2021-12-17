@@ -7,46 +7,65 @@ import {
     ResponsiveContainer,
     Tooltip,
     Label,
-    LabelList
+    LabelList,
+    Legend
 } from "recharts";
 
 const renderCustomizedLabel = (props) => {
     const { content, ...rest } = props;
 
-    return <Label {...rest} fontSize="12" fill="#FFFFFF" fontWeight="Bold" />;
+    return <Label {...rest} fontSize="12" fill="#000000" fontWeight="Bold" />;
 };
 
 const VerticalBarChart = ({ data }) => {
 
     return (
-        <div className="content c-white">
-            <h1>Work in progress 🚧</h1>
-            <ResponsiveContainer height={250} width={"100%"}>
+        <>
+            <ResponsiveContainer height={350} width={"100%"}>
                 <BarChart
-                    layout="vertical"
                     data={data}
+                    layout="vertical"
                     margin={{ left: 50, right: 50 }}
                     stackOffset="expand"
                 >
-                    <XAxis hide type="number" />
+                    <XAxis type="number" />
                     <YAxis
                         type="category"
-                        dataKey="name"
-                        stroke="#FFFFFF"
+                        dataKey="tanggal"
+                        stroke="#000000"
                         fontSize="12"
                     />
                     <Tooltip />
-                    <Bar dataKey="failed" fill="#dd7876" stackId="a">
+
+                    <Legend verticalAlign="bottom" align="left" height={10} width={300} />
+
+                    <Bar dataKey="positif" fill="#dd7876">
                         <LabelList
-                            dataKey="failed"
-                            position="center"
+                            dataKey="positif"
+                            position="right"
+                            content={renderCustomizedLabel}
+                        />
+                    </Bar>
+                    <Bar dataKey="meninggal" fill="rgb(255, 114, 94)">
+                        <LabelList
+                            dataKey="meninggal"
+                            position="right"
                             content={renderCustomizedLabel}
                         />
                     </Bar>
 
+                    <Bar dataKey="sembuh" fill="rgb(146, 227, 169)">
+                        <LabelList
+                            dataKey="sembuh"
+                            position="right"
+                            content={renderCustomizedLabel}
+                        />
+                    </Bar>
+
+
                 </BarChart>
-            </ResponsiveContainer>
-        </div>
+            </ResponsiveContainer >
+        </ >
     );
 }
 

@@ -5,7 +5,6 @@ import CardItem from './CardItem';
 import { ReactComponent as SearchNotFoundSVG } from '../assets/search-not-found.svg';
 import EmptyResult from './EmptyResult';
 
-
 const CardList = ({ isDataLoaded, dataSource, role, sampleData = [], ...props }) => {
     useEffect(() => {
         console.log(dataSource)

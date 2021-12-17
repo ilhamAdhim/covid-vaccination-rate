@@ -157,10 +157,12 @@ const DetailProvince = props => {
             <div className="detail-province-page">
                 {
                     provID === undefined ?
+                        <div style={{marginTop : '2em', marginBottom: '1.4em'}}>
                         <EmptyResult
                             withButton={true}
                             ImageSVG={<NotFoundSVG />}
                             description={`Provinsi ${getProvinceName()} tidak ditemukan`} />
+                        </div>
                         :
                         <>
                             <Breadcrumb style={{ marginBottom: '3em', marginTop: '-2em' }}>

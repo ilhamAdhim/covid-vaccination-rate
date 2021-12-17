@@ -27,3 +27,17 @@
   color: #ff725e;
   border-color: #ff725e;
 }
+
+/* For small screen */
+@media only screen and (max-width: 641px) {
+  #jumbotron-header {
+    flex-direction: column-reverse;
+  }
+}
+
+/* For medium screen */
+@media only screen and (max-width: 1024px) and (min-width: 641px) {
+  #jumbotron-header {
+    flex-direction: column-reverse;
+  }
+}

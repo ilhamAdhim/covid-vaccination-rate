@@ -6,7 +6,7 @@ import { ReactComponent as JumbotronImg } from '../assets/jumbotron-image.svg';
 const HeaderJumbotron = () => {
     return (
         <Row id="jumbotron-header">
-            <Col flex="2" sm={{ span: 12 }}>
+            <Col flex={1} sm={24}>
                 <Typography.Title>
                     Stay Safe
                     <br />
@@ -18,8 +18,10 @@ const HeaderJumbotron = () => {
                 </Typography.Paragraph>
                 <Button className="btn-cta" > Learn More</Button>
             </Col>
-            <Col flex="2" sm={{ span: 12 }}>
-                <JumbotronImg />
+            <Col flex={1} sm={24}>
+                <div className="svg-jumbotron">
+                    <JumbotronImg />
+                </div>
             </Col>
         </Row>
     );

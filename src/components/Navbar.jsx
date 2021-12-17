@@ -33,7 +33,7 @@ const routes = [
 ]
 
 const Navbar = props => {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
     const [isSmallScreen, setIsSmallScreen] = useState(false)
 
     const { width, height } = useWindowDimensions();
