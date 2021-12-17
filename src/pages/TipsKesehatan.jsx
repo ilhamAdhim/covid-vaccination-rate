@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; 
 import { Divider } from 'antd';
 import HeaderTips from '../components/HeaderTips';
 import HygieneCardList from '../components/HygieneCardList';
