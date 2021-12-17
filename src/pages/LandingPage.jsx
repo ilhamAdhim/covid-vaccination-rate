@@ -1,5 +1,5 @@
-import { Card, Col, Divider, Row, Typography } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { Col, Divider, Row, Typography } from 'antd';
 import HeaderJumbotron from '../components/HeaderJumbotron';
 import SearchComponent from '../components/SearchComponent';
 import Footer from '../components/Footer';
@@ -19,6 +19,10 @@ import '../styles/svg-style.css'
 import { getFormattedDate } from '../utils/Common';
 
 const LandingPage = props => {
+    const searchRef = useRef(null)
+
+    const scrollToSearch = () => searchRef.current.scrollIntoView()
+
     const [provinceData, setProvinceData] = useState([''])
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
@@ -31,6 +35,7 @@ const LandingPage = props => {
     const [isHospitalLoaded, setIsHospitalLoaded] = useState(false)
 
     useEffect(() => {
+
         getProvinceData().then(responseData => setProvinceData(responseData))
 
         getIndonesiaCOVIDStats().then(responseData => {
@@ -67,7 +72,7 @@ const LandingPage = props => {
     return (
         <>
             <div className="landing-page">
-                <HeaderJumbotron />
+                <HeaderJumbotron onClickButton={scrollToSearch} />
 
                 <Divider className="colored-divider"> Statistics </Divider>
                 <Row align="center" style={{ marginBottom: '4em' }}>
@@ -139,7 +144,9 @@ const LandingPage = props => {
                 <CardList dataSource={hospitalMalang} role="hospital" isDataLoaded={isHospitalLoaded} />
 
                 {/* Bagian Search Provinsi */}
-                <SearchComponent role="provinsi" dataSource={provinceData} isDataLoaded={true} />
+                <div ref={searchRef}>
+                    <SearchComponent role="provinsi" dataSource={provinceData} isDataLoaded={true} />
+                </div>
             </div >
             <Footer />
         </>

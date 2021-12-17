@@ -19,7 +19,7 @@ const SearchComponent = ({ role, dataSource, isDataLoaded, ...props }) => {
     const [searchResult, setSearchResult] = useState([])
     const [sampleSearchResult, setSampleSearchResult] = useState([])
 
-    let placeholder = `Cari ${role} . . . `
+    let placeholder = `Contoh : Jawa Timur . . .  `
 
     const onSearch = value => {
         if (value === '') setIsSearching(false)

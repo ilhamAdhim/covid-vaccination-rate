@@ -14,6 +14,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .text-total-case-landing-page,
 .text-daily-case-landing-page {
   text-align: center;

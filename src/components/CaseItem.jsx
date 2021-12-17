@@ -5,7 +5,6 @@ import { uppercaseFirst } from '../utils/Common';
 import '../styles/style.css'
 
 const CaseItem = ({ caseCondition, number, isLoading }) => {
-    console.log("wkowk")
     let uppercasedCondition = uppercaseFirst(caseCondition)
     let excludeCondition = ["tanggal", "created", "lastUpdate"]
 
