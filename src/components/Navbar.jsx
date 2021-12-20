@@ -17,6 +17,8 @@ import { Col, Row } from 'antd';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import { MenuUnfoldOutlined, UpOutlined } from '@ant-design/icons';
 
+import logo from '../assets/logo.png'
+
 const routes = [
     {
         link: '/',
@@ -51,7 +53,7 @@ const Navbar = props => {
         <Router>
             <Row justify="space-around" gutter={20} style={{ marginBottom: '2em' }} id="navbar">
                 <Col span={8}>
-                    Logo
+                    <img src={logo} alt="lalaa" style={{ width: 150}} />
                 </Col>
                 {isSmallScreen &&
                     <Col span={16} className="btn-container">
@@ -70,12 +72,12 @@ const Navbar = props => {
                         display:
                             isSmallScreen ?
                                 (toggle ? 'block' : 'none')
-                                : 'inline-block'
+                                : 'inline-block', paddingTop: 'inherit'
                     }}>
 
                     <Row justify={isSmallScreen ? "center" : "space-around"}>
                         {routes.map(item =>
-                            <Col span={isSmallScreen ? 24 : 8} style={{ textAlign: 'center' }}>
+                            <Col span={isSmallScreen ? 24 : 8} style={{  display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>
                                 <Link to={item.link}>
                                     <p className="menu">{item.name}</p>
                                 </Link>
