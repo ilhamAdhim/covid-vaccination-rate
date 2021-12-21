@@ -3,10 +3,9 @@
 ## Executive Summary
 Indonesia is predicted to have demography bonus by 2030 -2045. However, for the past 2 years, COVID-19 breaks in and leads to interference of labors in their productive age. Responding to this, Indonesia has done preventive solution of this epidemic through vaccinations. To combat the virus, BPOM has permitted 10 vaccines variants by 18 October 2021.
 
-Knowing these facts, the question in mind is 
+ > Knowing these facts, the question in mind is 
 <br />
 <b> How is the prediction of vaccination rate to achieve herd immunity ? When will it be ?  </b>
-
 
 
 ## Project Overview
@@ -14,20 +13,32 @@ Knowing these facts, the question in mind is
 
 <center> 
 
-![App Logo](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/logo.png?raw=true)
+![App Logo](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/logo.png?raw=true)
 
+App Logo 
+</center>
 
-![Landing Page](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/beranda.jpg?raw=true)
+<br />
+To answer such questions, we tried to develop a web application that serves information of daily cases, hospitals available in Indonesia, as well as trained ML model to predict the vaccination rate.
 
+<br />
 
-![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
+![Landing Page](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/beranda.jpg?raw=true)
 
+<center> Landing Page </center>
+<br />
 
-![Health Tips](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/tips-kesehatan.jpg?raw=true)
+![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
+
+<center> Covid Cases - Last 7 Days </center>
+<br />
+
+![Health Tips](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/tips-kesehatan.jpg?raw=true)
+
+<center> Health Tips </center>
 
 </center>
-<br />
-To answer such questions, we tried to develop a web application that serves information of daily cases, hospitals available for vaccination in Indonesia, as well as trained ML model to predict the vaccination rate.
+
 
 
 ## Tech Stack
