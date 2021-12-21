@@ -77,7 +77,7 @@ const Navbar = props => {
 
                     <Row justify={isSmallScreen ? "center" : "space-around"}>
                         {routes.map(item =>
-                            <Col span={isSmallScreen ? 24 : 8} style={{  display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Col span={isSmallScreen ? 24 : 8} style={{  display: 'inline-flex', justifyContent: 'center' }}>
                                 <Link to={item.link}>
                                     <p className="menu">{item.name}</p>
                                 </Link>

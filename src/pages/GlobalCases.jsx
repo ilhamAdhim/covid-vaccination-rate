@@ -20,6 +20,10 @@ const GlobalCases = props => {
         })
     }, [])
 
+    const handleClick = () => {
+        window.open("https://www.who.int/emergencies/diseases/novel-coronavirus-2019");
+    }
+
     return (
         <>
             <div className='bg-site'>
@@ -41,7 +45,7 @@ const GlobalCases = props => {
                     </Typography.Paragraph>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                    <Button className="btn-cta" href='https://www.who.int/emergencies/diseases/novel-coronavirus-2019'> Learn More</Button>
+                    <Button className="btn-cta" onClick={handleClick}> Learn More</Button>
                 </div>
             </div>
             <Footer />
