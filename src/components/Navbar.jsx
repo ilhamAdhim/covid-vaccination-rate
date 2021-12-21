@@ -22,7 +22,7 @@ import logo from '../assets/logo.png'
 const routes = [
     {
         link: '/',
-        name: 'Home'
+        name: 'Beranda'
     },
     {
         link: '/tips-kesehatan',

@@ -66,7 +66,7 @@ const LandingPage = props => {
     }, []);
 
     useEffect(() => {
-        document.title = "COVID-19 Vaccination Web"
+        document.title = "Portal COVID-19 Web"
     }, []);
 
     return (
@@ -74,7 +74,7 @@ const LandingPage = props => {
             <div className="landing-page">
                 <HeaderJumbotron onClickButton={scrollToSearch} />
 
-                <Divider className="colored-divider"> Statistics </Divider>
+                <Divider className="colored-divider"> Statistik </Divider>
                 <Row align="center" style={{ marginBottom: '4em' }}>
                     <Typography.Title level={3}>
                         Corona Virus Overview
@@ -94,7 +94,7 @@ const LandingPage = props => {
                     </Col>
                     <Col sm={24} md={12} >
                         <Typography.Title className="text-total-case-landing-page" level={4} >
-                            Total Case di Indonesia
+                            Total Kasus di Indonesia
                         </Typography.Title>
 
                         <Row justify="center" gutter={[20, 20]} className="new-row">

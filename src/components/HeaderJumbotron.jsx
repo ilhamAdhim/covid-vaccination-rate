@@ -6,15 +6,16 @@ import { ReactComponent as JumbotronImg } from '../assets/jumbotron-image.svg';
 const HeaderJumbotron = ({onClickButton}) => {
     return (
         <Row id="jumbotron-header">
-            <Col flex={1} sm={24}>
+            <Col flex={1} sm={24} md={10}>
                 <Typography.Title>
-                    Stay Safe
+                    Monitor <span style={{ color: '#ff725e' }}> COVID-19 </span>
                     <br />
-                    From <span style={{ color: '#ff725e' }}> COVID-19 </span>
+                    Indonesia 
                 </Typography.Title>
 
                 <Typography.Paragraph style={{ fontSize: '1.2em', marginTop: '2em' }}>
-                    Protect yourself & others around you knowing the facts and taking appropriate
+                    Detail kasus harian, prediksi kecepatan vaksinasi COVID-19
+                    dan info rumah sakit di Indonesia
                 </Typography.Paragraph>
                 <Button className="btn-cta" onClick={onClickButton} > Cari Provinsi </Button>
             </Col>
