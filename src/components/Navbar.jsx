@@ -53,7 +53,7 @@ const Navbar = props => {
         <Router>
             <Row justify="space-around" gutter={20} style={{ marginBottom: '2em' }} id="navbar">
                 <Col span={8}>
-                    <img src={logo} alt="lalaa" style={{ width: 150}} />
+                    <img src={logo} alt="lalaa" style={{ width: 150 }} />
                 </Col>
                 {isSmallScreen &&
                     <Col span={16} className="btn-container">
@@ -77,11 +77,22 @@ const Navbar = props => {
 
                     <Row justify={isSmallScreen ? "center" : "space-around"}>
                         {routes.map(item =>
-                            <Col span={isSmallScreen ? 24 : 8} style={{  display: 'inline-flex', justifyContent: 'center' }}>
-                                <Link to={item.link}>
-                                    <p className="menu">{item.name}</p>
-                                </Link>
-                            </Col>
+                            <>
+                                {isSmallScreen ?
+                                    <Col span={24} style={{ display: 'inline-flex', justifyContent: 'center' }}>
+                                        <Link to={item.link}>
+                                            <p className="menu">{item.name}</p>
+                                        </Link>
+                                    </Col>
+                                    :
+                                    <Col flex={1}>
+                                        <Link to={item.link}>
+                                            <p className="menu">{item.name}</p>
+                                        </Link>
+                                    </Col>
+                                }
+
+                            </>
                         )}
                     </Row>
                 </Col>

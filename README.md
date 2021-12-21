@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# COVID 19 - Vaccination Rate Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Executive Summary
+Indonesia is predicted to have demography bonus by 2030 -2045. However, for the past 2 years, COVID-19 breaks in and leads to interference of labors in their productive age. Responding to this, Indonesia has done preventive solution of this epidemic through vaccinations. To combat the virus, BPOM has permitted 10 vaccines variants by 18 October 2021.
 
-## Available Scripts
+Knowing these facts, the question in mind is 
+<br />
+<b> How is the prediction of vaccination rate to achieve herd immunity ? When will it be ?  </b>
 
-In the project directory, you can run:
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Overview
+<br />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<center> 
 
-### `yarn test`
+![App Logo](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/logo.png?raw=true)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+![Landing Page](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/beranda.jpg?raw=true)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+![Health Tips](https://github.com/ilhamAdhim/covid-vaccination-rate/documentation/tips-kesehatan.jpg?raw=true)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+</center>
+<br />
+To answer such questions, we tried to develop a web application that serves information of daily cases, hospitals available for vaccination in Indonesia, as well as trained ML model to predict the vaccination rate.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Tech Stack
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Ant-Design](https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)
 
-## Learn More
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## List API Used
+- 📍 [API Covid-19 daily case per provinsi](https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi/more)
+  
+- 🦠 [API Covid-19](https://covid19.mathdro.id/api)
+  
+- 💉 [API Hospital List for Vaccinations](https://github.com/satyawikananda/rs-bed-covid-indo-api)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Project Parts
+See other repos : 
+- ⚙ [Backend + ML Implementation ](https://github.com/farkhan777/Indonesia-COVID-19-Ratio-Vaccination)
