@@ -22,20 +22,20 @@ App Logo
 To answer such questions, we tried to develop a web application that serves information of daily cases, hospitals available in Indonesia, as well as trained ML model to predict the vaccination rate.
 
 <br />
+<center> Landing Page </center>
 
 ![Landing Page](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/beranda.jpg?raw=true)
 
-<center> Landing Page </center>
 <br />
+<center> Covid Cases - Last 7 Days </center>
 
 ![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
 
-<center> Covid Cases - Last 7 Days </center>
 <br />
+<center> Health Tips </center>
 
 ![Health Tips](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/tips-kesehatan.jpg?raw=true)
 
-<center> Health Tips </center>
 
 </center>
 
