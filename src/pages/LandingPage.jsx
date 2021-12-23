@@ -74,7 +74,7 @@ const LandingPage = props => {
     }, []);
 
     useEffect(() => {
-        document.title = "Portal COVID-19 Web"
+        document.title = "c"
     }, []);
 
     return (
