@@ -1,3 +1,4 @@
+import { Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, LabelList, Label } from 'recharts';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
@@ -5,27 +6,27 @@ import VerticalBarChart from './VerticalBarChart';
 
 const renderCustomizedLabel = (props) => {
     const { content, ...rest } = props;
-
     return <Label {...rest} fontSize="12" fill="#000000" fontWeight="Bold" />;
 };
 
-
-const VisualizeBarChart = ({ data }) => {
+const VisualizeBarChart = ({ data, isLoading }) => {
     const [isSmallScreen, setIsSmallScreen] = useState(false)
 
     const { width, height } = useWindowDimensions();
 
     useEffect(() => {
-        if (width < 641)
-            setIsSmallScreen(true)
-        else
-            setIsSmallScreen(false)
+        if (width < 641) setIsSmallScreen(true)
+        else setIsSmallScreen(false)
     }, [width]);
 
+    if(isLoading)
+    return (<Skeleton active />)
+
+    else
     return (
         <>
             {isSmallScreen ?
-                <VerticalBarChart data={data} />
+                <VerticalBarChart data={data} labelCustom={renderCustomizedLabel} />
                 :
                 <BarChart data={data} width={1200} height={300} barSize={20}
                     style={{ marginTop: '4em' }}

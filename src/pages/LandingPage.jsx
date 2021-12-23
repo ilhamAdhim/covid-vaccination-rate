@@ -7,7 +7,7 @@ import CardList from '../components/CardList';
 import VisualizeBarChart from '../components/charts/VisualizeBarChart';
 
 import CaseItem from '../components/CaseItem';
-import { getHospitalDetail, getIndonesiaCOVIDStats, getLastWeekCOVIDGraph, getProvinceData } from '../utils/DataCRUD';
+import { getHospitalDetail, getIndonesiaCOVIDStats, getLastWeekCOVIDGraph, getProvinceData, getVaccinationRatePrediction } from '../utils/DataCRUD';
 
 import { ReactComponent as CustomBlobSVG } from '../assets/custom-blob.svg';
 import { ReactComponent as IndonesiaSVG } from '../assets/indonesia-map.svg';
@@ -17,6 +17,7 @@ import '../styles/style.css'
 import '../styles/landingpage.css'
 import '../styles/svg-style.css'
 import { getFormattedDate } from '../utils/Common';
+import VisualizeLineChart from '../components/charts/VisualizeLineChart';
 
 const LandingPage = props => {
     const searchRef = useRef(null)
@@ -26,11 +27,13 @@ const LandingPage = props => {
     const [provinceData, setProvinceData] = useState([''])
     const [dailyCaseIndoData, setDailyCaseIndoData] = useState([])
     const [totalCaseIndoData, setTotalCaseIndoData] = useState([])
+    const [predictionData, setPredictionData] = useState([])
     const [hospitalMalang, setHospitalMalang] = useState([])
 
     const [lastMonthGraph, setLastMonthGraph] = useState([])
 
     const [isLoadingDaily, setIsLoadingDaily] = useState(true)
+    const [isLoadingPrediction, setIsLoadingPrediction] = useState(true)
     const [isLoadingTotal, setIsLoadingTotal] = useState(true)
     const [isHospitalLoaded, setIsHospitalLoaded] = useState(false)
 
@@ -63,6 +66,11 @@ const LandingPage = props => {
                 setIsHospitalLoaded(true)
                 setHospitalMalang(responseData?.hospitals)
             })
+
+        getVaccinationRatePrediction().then(item => {
+            setPredictionData(item.total)
+            setIsLoadingPrediction(false)
+        })
     }, []);
 
     useEffect(() => {
@@ -131,7 +139,7 @@ const LandingPage = props => {
                 <Row className="new-row" justify="center" >
                     <Col>
                         <Divider className="normal-divider" > Prediksi Vaksinasi COVID-19 </Divider>
-                        <img src={logo} alt="lalaa" width={600} className="img-center" />
+                        <VisualizeLineChart data={predictionData} isLoading={isLoadingPrediction} />
                     </Col>
                 </Row>
                 <Divider className="colored-divider"> Info Rumah Sakit</Divider>

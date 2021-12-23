@@ -44,3 +44,8 @@ export const getLastWeekCOVIDGraph = async () => {
     let response = await axios.get(`https://apicovid19indonesia-v2.vercel.app/api/indonesia/harian`)
     return response.data.slice(-7)
 }
+
+export const getVaccinationRatePrediction = async () => {
+    let response = await axios.get(`https://ratio-vactination.herokuapp.com/api/predict_json`)
+    return response.data
+}

@@ -11,13 +11,7 @@ import {
     Legend
 } from "recharts";
 
-const renderCustomizedLabel = (props) => {
-    const { content, ...rest } = props;
-
-    return <Label {...rest} fontSize="12" fill="#000000" fontWeight="Bold" />;
-};
-
-const VerticalBarChart = ({ data }) => {
+const VerticalBarChart = ({ data,labelCustom }) => {
 
     return (
         <>
@@ -43,14 +37,14 @@ const VerticalBarChart = ({ data }) => {
                         <LabelList
                             dataKey="positif"
                             position="right"
-                            content={renderCustomizedLabel}
+                            content={labelCustom}
                         />
                     </Bar>
                     <Bar dataKey="meninggal" fill="rgb(255, 114, 94)">
                         <LabelList
                             dataKey="meninggal"
                             position="right"
-                            content={renderCustomizedLabel}
+                            content={labelCustom}
                         />
                     </Bar>
 
@@ -58,11 +52,9 @@ const VerticalBarChart = ({ data }) => {
                         <LabelList
                             dataKey="sembuh"
                             position="right"
-                            content={renderCustomizedLabel}
+                            content={labelCustom}
                         />
                     </Bar>
-
-
                 </BarChart>
             </ResponsiveContainer >
         </ >

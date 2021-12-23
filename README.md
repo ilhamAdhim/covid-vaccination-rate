@@ -4,8 +4,8 @@
 Indonesia is predicted to have demography bonus by 2030 -2045. However, for the past 2 years, COVID-19 breaks in and leads to interference of labors in their productive age. Responding to this, Indonesia has done preventive solution of this epidemic through vaccinations. To combat the virus, BPOM has permitted 10 vaccines variants by 18 October 2021.
 
  > Knowing these facts, the question in mind is 
-<br />
-<b> How is the prediction of vaccination rate to achieve herd immunity ? When will it be ?  </b>
+ > <br />
+ > <b> How is the prediction of vaccination rate to achieve herd immunity ? When will it be ?  </b>
 
 
 ## Project Overview
@@ -29,6 +29,11 @@ To answer such questions, we tried to develop a web application that serves info
 <br />
 <center> Covid Cases - Last 7 Days </center>
 
+![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/predict-vaccination-rate.jpg?raw=true)
+
+<br />
+<center> Vaccination Prediction </center>
+
 ![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
 
 <br />
@@ -45,7 +50,6 @@ To answer such questions, we tried to develop a web application that serves info
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Ant-Design](https://img.shields.io/badge/-AntDesign-%230170FE?style=for-the-badge&logo=ant-design&logoColor=white)
-
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
