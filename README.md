@@ -29,12 +29,14 @@ To answer such questions, we tried to develop a web application that serves info
 <br />
 <center> Covid Cases - Last 7 Days </center>
 
-![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/predict-vaccination-rate.jpg?raw=true)
+![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
+
+
 
 <br />
 <center> Vaccination Prediction </center>
 
-![Covid Cases - Last 7 Days](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/pantauan-covid-seminggu-terakhir.jpg?raw=true)
+![Vaccination Prediction](https://github.com/ilhamAdhim/covid-vaccination-rate/blob/master/documentation/predict-vaccination-rate.jpg?raw=true)
 
 <br />
 <center> Health Tips </center>
@@ -65,3 +67,6 @@ To answer such questions, we tried to develop a web application that serves info
 ## Project Parts
 See other repos : 
 - ⚙ [Backend + ML Implementation ](https://github.com/farkhan777/Indonesia-COVID-19-Ratio-Vaccination)
+
+## Deployed by
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
