@@ -51,7 +51,7 @@ const Navbar = props => {
 
     return (
         <Router>
-            <Row justify="space-around" gutter={20} style={{ marginBottom: '2em' }} id="navbar">
+            <Row justify="space-around" gutter={20} style={{ marginBottom: '2em', marginLeft: 0, marginRight: 0 }} id="navbar">
                 <Col span={8}>
                     <img src={logo} alt="lalaa" style={{ width: 150 }} />
                 </Col>

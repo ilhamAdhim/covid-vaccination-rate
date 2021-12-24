@@ -26,26 +26,28 @@ const GlobalCases = props => {
 
     return (
         <>
-            <div className='bg-site'>
-                <div style={{ paddingTop: '1em', textAlign: 'center'}}>
-                    <Typography.Title level={1} >
-                        Corona Covid-19 Virus
-                    </Typography.Title>
-                </div>
-                <div className="global-page">
-                    <Row justify="space-between" gutter={0} className="new-row">
-                        {Object.entries(globalCaseData).map(item =>
-                            <GlobalCaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingGlobal} />
-                        )}
-                    </Row>
-                </div>
-                <div className='center-item margin-btm-text'>
-                    <Typography.Paragraph level={6} style={{ fontWeight: 'bold' }}>
-                        The Coronavirus (COVID-19) was first in Wuhan,Hubei,China in December 2019, the outbreak recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020.
-                    </Typography.Paragraph>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                    <Button className="btn-cta" onClick={handleClick}> Learn More</Button>
+            <div>
+                <div className='bg-site'>
+                    <div style={{ paddingTop: '1em', textAlign: 'center'}}>
+                        <Typography.Title level={1} className='title-size'>
+                            Corona Covid-19 Virus
+                        </Typography.Title>
+                    </div>
+                    <div className="global-page">
+                        <Row justify="space-between" gutter={0} className="new-row">
+                            {Object.entries(globalCaseData).map(item =>
+                                <GlobalCaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingGlobal} />
+                            )}
+                        </Row>
+                    </div>
+                    <div className='center-item margin-btm-text'>
+                        <Typography.Paragraph level={6} style={{ fontWeight: 'bold' }}>
+                            The Coronavirus (COVID-19) was first in Wuhan,Hubei,China in December 2019, the outbreak recognized as a pandemic by the World Health Organization (WHO) on 11 March 2020.
+                        </Typography.Paragraph>
+                    </div>
+                    <div style={{ textAlign: 'center'}}>
+                        <Button className="btn-cta" onClick={handleClick}> Learn More</Button>
+                    </div>
                 </div>
             </div>
             <Footer />
