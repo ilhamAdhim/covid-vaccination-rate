@@ -2,7 +2,8 @@ import { Card, Col, Skeleton, Typography } from 'antd';
 import React from 'react';
 import { uppercaseFirst } from '../utils/Common';
 
-import '../styles/style.css'
+// import '../styles/style.css'
+import '../styles/global-case-card.css'
 
 const GlobalCaseItem = ({ caseCondition, number, isLoading }) => {
     let uppercasedCondition = uppercaseFirst(caseCondition)
@@ -26,7 +27,7 @@ const GlobalCaseItem = ({ caseCondition, number, isLoading }) => {
                     {isLoading ?
                         <Skeleton active></Skeleton>
                         :
-                        <Card className="case-item">
+                        <Card className="case-item2">
                             <Typography.Text children={uppercasedCondition} style={textStyle} />
                             <hr style={{ marginBottom: '-1em', opacity: '0.4' }} />
                             <br />
