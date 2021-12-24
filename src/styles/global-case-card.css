@@ -4,5 +4,13 @@
 
 .case-item2 {
     text-align: center;
-    width: 170px;
+    width: 168px;
+}
+
+/* For small screen */
+@media only screen and (max-width: 640px) {
+    .case-item2 {
+        text-align: center;
+        width: 160px;
+    }
 }
