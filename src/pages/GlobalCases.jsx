@@ -33,7 +33,7 @@ const GlobalCases = props => {
                     </Typography.Title>
                 </div>
                 <div className="global-page">
-                    <Row justify="space-between" gutter={20} className="new-row">
+                    <Row justify="space-between" gutter={0} className="new-row">
                         {Object.entries(globalCaseData).map(item =>
                             <GlobalCaseItem key={item[0]} caseCondition={item[0]} number={item[1]} isLoading={isLoadingGlobal} />
                         )}
